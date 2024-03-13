@@ -1,0 +1,98 @@
+/* taking off all the automatic margins on the page */
+*
+{
+  margin: 0;
+}
+
+/* variables */
+:root
+{
+  --something: #A2E3A1;
+}
+
+body
+{
+  overflow-y: scroll;
+}
+
+/* top bar menu */
+.top-bar
+{
+  z-index: 2;
+  position: fixed;
+  display: flex;
+  height: 145px;
+  width: 100%;
+  background: green;
+
+  /* left side of the top bar */
+  .left
+  {
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 50%;
+
+    /* our company logo */
+    img
+    {
+      background: black;
+      height: 75px;
+      width: 125px;
+      margin-right: 20px;
+    }
+    /* top bar options */
+    h1
+    {
+      margin: 20px;
+    }
+  }
+
+  /* right side of the top bar */
+  .right
+  {
+    padding: 50px;
+    div
+    {
+      display: flex;
+      h2
+      {
+        margin: 10px;
+      }
+    }
+    /* search bar */
+    input
+    {
+      font-size: 20px;
+      width: 750px;
+      padding: 8px 10px;
+      border-radius: 100px;
+    }
+    i
+    {
+      position: fixed;
+      font-size: 30px;
+      top: 76px;
+      padding: 5px 14px;
+      border-top-right-radius: 100px;
+      border-bottom-right-radius: 100px;
+      border-left: 1px solid black;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 50%;
+  }
+}
+
+.main
+{
+  position: absolute;
+  background: gray;
+  height: 100%;
+  width: 100%;
+  transform: translateY(145px);
+}
