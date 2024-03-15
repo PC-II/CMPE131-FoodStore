@@ -7,7 +7,7 @@
 /* variables */
 :root
 {
-  --something: #A2E3A1;
+  --ogs-green: #43A047;
 }
 
 body
@@ -37,7 +37,7 @@ body
   margin-top: 50px;
   height: 100px;
   width: 100%;
-  background: green;
+  background: var(--ogs-green);
   display: flex;
   align-items: center;
   
@@ -80,6 +80,7 @@ body
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
   transform: translate(-46px, 2px);
+  background: white;
 }
 
 .right i
@@ -109,6 +110,8 @@ body
   align-items: center;
   justify-content: center;
 }
+
+
 
 .main
 {
