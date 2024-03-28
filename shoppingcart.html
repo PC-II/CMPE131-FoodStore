@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="./index.css"></link>
+  <script src="shoppingcart.js" async></script>
   <title>Food Store</title>
 </head>
 <body>
@@ -18,83 +18,49 @@
     <section class="right">
       <div>
         <h2>Sign In</h2>
-        <h2>Cart</h2>
+        <h2><li><a href="shoppingcart.html">Cart</a></li></h2>
       </div>
         <input type="text" placeholder="What can we help you find?">
         <i class='bx bx-search-alt'></i>
     </section>
   </div>
   <div class="main">
-    <section>
-
-        <div class="container">
-           <h2 class="px-5 p-2">My shopping cart</h2>
-           <div class="cart">
-              <div class="col-md-12 col-lg-10 mx-auto">
-                 <div class="cart-item">
-                    <div class="row">
-                       <div class="col-md-7 center-item">
-                          <img src="placeholder" alt="">
-                          <h5>Item Placeholder Name</h5>
-                       </div>
-  
-                       <div class="col-md-5 center-item">
-                          <div class="input-group number-spinner">
-                             <button id="placeholder" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                             <input id="placeholder" type="number" min="0" class="form-control text-center" value="1">
-                             <button id="placeholder" class="btn btn-default"><i class="fas fa-plus"></i></button>
-                          </div>
-                          <h5>$ <span id="placeholder-total">XXXX</span> </h5>
-                          <img src="images/remove.png" alt="" class="remove-item">
-                       </div>
-                    </div>
-                 </div>
-  
-                 <div class="cart-item">
-                    <div class="row">
-                       <div class="col-md-7 center-item mx-auto">
-                          <img src="placeholder" alt="">
-                          <h5>Item Placeholder Name</h5>
-                       </div>
-                       <div class="col-md-5 center-item">
-                          <div class="input-group number-spinner">
-                             <button id="placeholder" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                             <input id="placeholder" type="number" min="0" class="form-control text-center" value="1">
-                             <button  id="placeholder" class="btn btn-default"><i class="fas fa-plus"></i></button>
-  
-                          </div>
-                          <h5>$ <span id="placeholder-total">XXXX</span> </h5>
-                          <img src="images/remove.png" alt="" class="remove-item">
-                       </div>
-                    </div>
-                 </div>
-  
-                 <div class="cart-item">
-                    <div class="row g-2">
-  
-                       <div class="col-6">
-                          <h5>Subtotal: </h5>
-                          <h5>Tax:</h5>
-                          <h5>Total:</h5>
-                       </div>
-  
-                       <div class="col-6 status">
-                          <h5>$<span id="sub-total">XXXX</span></h5>
-                          <h5>$<span id="tax-amount">XXXX</span></h5>
-                          <h5>$<span id="total-price">XXXX</span></h5>
-                       </div>
-                       
-                    </div>
-                 </div>
-                 <div class="col-md-12 pt-4 pb-4">
-                    <button type="button" class="btn btn-success check-out">Check Out</button>
-                 </div>
+  <section class="container content-section">
+      <h2 class="section-header">Vegetables</h2>
+      <div class="shop-items">
+          <div class="shop-item">
+              <span class="shop-item-title">Vegetables</span>
+              <img class="shop-item-image" src="">
+              <div class="shop-item-details">
+                  <span class="shop-item-price">$1.99</span>
+                  <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
               </div>
-           </div>
-        </div>
-     </section>
-
-    
+          </div>
+          <div class="shop-item">
+              <span class="shop-item-title">Meat</span>
+              <img class="shop-item-image" src="">
+              <div class="shop-item-details">
+                  <span class="shop-item-price">$6.99</span>
+                  <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section class="container content-section">
+      <h2 class="section-header">CART</h2>
+      <div class="cart-row">
+          <span class="cart-item cart-header cart-column">ITEM</span>
+          <span class="cart-price cart-header cart-column">PRICE</span>
+          <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+      </div>
+      <div class="cart-items">
+      </div>
+      <div class="cart-total">
+          <strong class="cart-total-title">Total</strong>
+          <span class="cart-total-price">$0</span>
+      </div>
+      <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+  </section> 
   </div>
 </body>
 </html>
