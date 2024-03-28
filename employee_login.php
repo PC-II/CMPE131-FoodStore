@@ -32,9 +32,9 @@ if(isset($_POST["eName"]) && isset($_POST["password"]))
             //check if password is correct
             if ($row["password"] === $password)
             { 
-                echo "Logged in Successfully.";
                 
-                echo "\r\n". "Redirecting to home page...";
+                echo "Logged in Successfully.";
+                echo "\r\n". "Redirecting to employee page...";
             }
             else
             {

@@ -1,4 +1,5 @@
 <?php
+    session_start();
 //check if email and password are provided
 if(isset($_POST["email"]) && isset($_POST["password"]))
 {
@@ -33,8 +34,11 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
             if ($row["password"] === $password)
             { 
                 echo "Logged in Successfully.";
-                
                 echo "\r\n". "Redirecting to home page...";
+                $_SESSION["user"] = $email;
+
+                header("Location: index.html");
+                exit();
             }
             else
             {

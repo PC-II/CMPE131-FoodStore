@@ -7,6 +7,9 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
     {
         $email = $_POST["email"];
         $password = $_POST["password"];
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $phone = $_POST["phone"];
         
         //create connection
         $conn = mysqli_connect("localhost", "root", "","userinfo");
@@ -32,18 +35,18 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
         else 
         {
             // Prepare a statement to insert new user data
-            $register_sql = "INSERT INTO customer_info (email, password) VALUES (?, ?)";
+            $register_sql = "INSERT INTO customer_info (email, password, firstName, lastName, phoneNumber) VALUES (?, ?, ?, ?, ?)";
             $register_stmt = $conn->prepare($register_sql);
-            $register_stmt->bind_param("ss", $email, $password);
+            $register_stmt->bind_param("sssss", $email, $password, $first_name, $last_name, $phone);
             $register_result = $register_stmt->execute();
 
             if($register_result) 
             {
                 echo "You were registered successfully :) ";
-                echo "\nRedirecting to home page...";
+                echo "\nRedirecting to login page...";
 
-                
-
+                header("Location: customer_login.html");
+                exit();
             } 
             else 
             {

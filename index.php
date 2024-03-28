@@ -1,3 +1,7 @@
+<?php
+  session_start();  //session for logged in users
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
