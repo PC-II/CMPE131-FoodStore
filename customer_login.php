@@ -1,62 +1,58 @@
 <?php
-    session_start();
-//check if email and password are provided
-if(isset($_POST["email"]) && isset($_POST["password"]))
-{
-    if($_POST["email"] && $_POST["password"])
-    {
+session_start();
+
+// Check if email and password are provided
+if(isset($_POST["email"]) && isset($_POST["password"])) {
+    if($_POST["email"] && $_POST["password"]) {
         $email = $_POST["email"];
         $password = $_POST["password"];
         
-        //create connection
-        $conn = mysqli_connect("localhost", "root", "","userinfo");
+        // Create connection
+        $conn = mysqli_connect("localhost", "root", "", "userinfo");
 
-        //check connection
-        if (!$conn)
-        {
-            die(("Connection failed: ") . mysqli_connect_error());
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
         }
 
-        //prepare and bind to protect against sql injection
+        // Prepare and bind to protect against SQL injection
         $stmt = $conn->prepare("SELECT password FROM customer_info WHERE email = ?");
         $stmt->bind_param("s", $email);
 
-        //execute query
+        // Execute query
         $stmt->execute();
 
-        //get result
+        // Get result
         $result = $stmt->get_result();
 
-        if($result->num_rows === 1)
-        {
+        if($result->num_rows === 1) {
             $row = $result->fetch_assoc();
-            //check if password is correct
-            if ($row["password"] === $password)
-            { 
-                echo "Logged in Successfully.";
-                echo "\r\n". "Redirecting to home page...";
+            // Check if password is correct
+            if ($row["password"] === $password) { 
                 $_SESSION["user"] = $email;
 
-                header("Location: index.html");
+                echo "<script>window.location.href='index.php';</script>";
                 exit();
+            } 
+            else {
+                $errorMessage = "Password incorrect";
             }
-            else
-            {
-                echo "Password incorrect";
-            }
-        }
-        else
-        {
-            echo "User does not exist";
+        }  
+        else {
+            $errorMessage = "User does not exist";
         }
 
-        //close connections
+        // Close connections
         $stmt->close();
         mysqli_close($conn); 
     } 
-    else 
-    {
-        echo "Email or password is empty.";
+    else {
+        $errorMessage = "Email or password is empty.";
     }
 }
+
+if (isset($errorMessage)) {
+    echo "<script>window.location.href='customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
+}
+
 ?>

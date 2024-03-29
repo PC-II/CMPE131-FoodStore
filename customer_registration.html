@@ -54,23 +54,48 @@
         background-color: #75e254;
     }
 
-    .register-link {
+    .link {
             text-align: center;
             margin-top: 10px;
         }
 
-        .register-link a {
+        .link a {
             color: #388022;
             text-decoration: none;
         }
 
-        .register-link a:hover {
+        .link a:hover {
             text-decoration: underline;
         }
 
-    .error-message {
-        color: red;
-    }
+        .error-message {
+            text-align: center;
+            margin-top: 10px;
+            color: rgba(255, 0, 0, 0.74);
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bottom-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .bottom-bar a:hover {
+            color: #ccc;
+        }
+
     
 </style>
 </head>
@@ -78,8 +103,8 @@
 
 <div class="container">
     <div class="registration-box">
-        <h2>Register</h2>
-        <form action="customer_registration.php" method="post" onsubmit="return validateForm()">
+        <h2> Customer Registration</h2>
+        <form action="customer_registration.php" method="post" onsubmit="return validatePassword()">
             
             <input type="text" name="email" placeholder="Email" required>
             <input type="password" id="password" name="password" placeholder="Password" required>
@@ -90,19 +115,27 @@
             <p class="error-message" id="password-error-message" style="display: none;">Passwords do not match.</p>
             <input type="submit" value="Register">
         </form>
+        <div class="error-message">
+            <p id="registration-error-message"></p>
+        </div>
 
-        <div class="register-link">
+        <div class="link">
             <p>Logging in? <a href="customer_login.html">Login</a></p>
         </div>
 
-        <div class="register-link">
+        <div class="link">
             <p><a href="index.php">Home Page</a></p>
         </div>
     </div>
 </div>
 
+<div class="bottom-bar">
+    <a href="aboutpage.html">Need Support?</a>
+</div>
+
+    <!--Check if passwords match-->
 <script>
-    function validateForm() {
+    function validatePassword() {
         var password = document.getElementById("password").value;
         var confirm_password = document.getElementById("confirm_password").value;
         var error_message = document.getElementById("password-error-message");
@@ -116,6 +149,21 @@
         }
     }
 </script>
+
+<script>
+    // Retrieve the error message from the query parameter
+    queryString = window.location.search;
+    urlParams = new URLSearchParams(queryString);
+    errorMessage = urlParams.get('error');
+
+    // Display the error message on the page
+    if (errorMessage) {
+      errorMessageElement = document.getElementById('registration-error-message');
+      errorMessageElement.innerText = errorMessage;
+    }
+  </script>
+
+   
 
 </body>
 </html>

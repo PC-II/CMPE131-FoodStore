@@ -26,6 +26,10 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
+        .login-box h2 {
+        text-align: center; 
+    }
+
         .login-box input[type="text"],
         .login-box input[type="password"] {
             width: 100%;
@@ -50,17 +54,17 @@
             background-color: #75e254;
         }
 
-        .register-link {
+        .link {
             text-align: center;
             margin-top: 10px;
         }
 
-        .register-link a {
+        .link a {
             color: #388022;
             text-decoration: none;
         }
 
-        .register-link a:hover {
+        .link a:hover {
             text-decoration: underline;
         }
     </style>
@@ -75,6 +79,15 @@
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
+
+        <div class="link">
+            <p>Are you a customer? <a href="customer_login.html">Customer Login</a></p>
+        </div>
+
+        <div class="link">
+            <p><a href="index.php">Home Page</a></p>
+        </div>
+
     </div>
 </div>
 

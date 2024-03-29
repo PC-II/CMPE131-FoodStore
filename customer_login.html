@@ -54,19 +54,48 @@
             background-color: #75e254;
         }
 
-        .register-link {
+        .link {
             text-align: center;
             margin-top: 10px;
         }
 
-        .register-link a {
+        .error-message {
+            text-align: center;
+            margin-top: 10px;
+            color: rgba(255, 0, 0, 0.74);
+        }
+
+        .link a {
             color: #388022;
             text-decoration: none;
         }
 
-        .register-link a:hover {
+        .link a:hover {
             text-decoration: underline;
         }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bottom-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .bottom-bar a:hover {
+            color: #ccc;
+        }
+
     </style>
 </head>
 <body>
@@ -80,20 +109,44 @@
             <input type="submit" value="Login">
         </form>
 
-        <div class="register-link">
+        <div class = "error-message">
+            <p id="login-error-message"></p>
+        </div>
+        
+        <div class="link">
             <p>Don't have an account? <a href="customer_registration.html">Register</a></p>
         </div>
         
-        <div class="register-link">
+        <div class="link">
             <p>Employee? <a href="employee_login.html">Employee Login</a></p>
         </div>
 
-        <div class="register-link">
+        <div class="link">
             <p><a href="index.php">Home Page</a></p>
         </div>
+
+        
+        <script>
+            // Retrieve the error message from the query parameter
+            queryString = window.location.search;
+            urlParams = new URLSearchParams(queryString);
+            errorMessage = urlParams.get('error');
+        
+            // Display the error message on the page
+            if (errorMessage) {
+              errorMessageElement = document.getElementById('login-error-message');
+              errorMessageElement.innerText = errorMessage;
+            }
+          </script>
 
     </div>
 </div>
 
+<div class="bottom-bar">
+    <a href="aboutpage.html">Need Support?</a>
+</div>
+
 </body>
 </html>
+
+

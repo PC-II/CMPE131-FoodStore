@@ -45,7 +45,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
                 echo "You were registered successfully :) ";
                 echo "\nRedirecting to login page...";
 
-                header("Location: customer_login.html");
+                echo "<script>window.location.href='customer_login.html';</script>";
                 exit();
             } 
             else 
@@ -63,5 +63,9 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
     {
         echo "Email or password is empty.";
     }
+}
+
+if (isset($errorMessage)) {
+    echo "<script>window.location.href='customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
 }
 ?>
