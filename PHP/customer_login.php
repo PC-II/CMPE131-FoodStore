@@ -31,7 +31,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
             if ($row["password"] === $password) { 
                 $_SESSION["user"] = $email;
 
-                echo "<script>window.location.href='index.php';</script>";
+                echo "<script>window.location.href='../PHP/index.php';</script>";
                 exit();
             } 
             else {
@@ -52,7 +52,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
 }
 
 if (isset($errorMessage)) {
-    echo "<script>window.location.href='customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
+    echo "<script>window.location.href='../HTML/customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
 }
 
 ?>

@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="./index.css"></link>
+  <link rel="stylesheet" href="../CSS/index.css"></link>
 
   <title>Food Store</title>
 </head>
@@ -53,9 +53,9 @@
   </div>
 
   <div class="main">
-    <img src="./main_placeholder.png" alt="">
+    <img src="../IMAGES/main_placeholder.png" alt="">
   </div>
 
 </body>
-<script src="./index.js"></script>
+<script src="../JS/index.js"></script>
 </html>

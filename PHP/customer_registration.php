@@ -46,7 +46,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
                 echo "You were registered successfully :) ";
                 echo "\nRedirecting to login page...";
 
-                echo "<script>window.location.href='customer_login.html';</script>";
+                echo "<script>window.location.href='../HTML/customer_login.html';</script>";
                 exit();
             } 
             else 
@@ -67,6 +67,6 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
 }
 
 if (isset($errorMessage)) {
-    echo "<script>window.location.href='customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
+    echo "<script>window.location.href='../HTML/customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
 }
 ?>

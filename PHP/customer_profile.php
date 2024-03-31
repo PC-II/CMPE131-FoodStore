@@ -32,7 +32,7 @@
     }
     else{
         echo "User Not Signed in";
-        echo "<script>window.location.href='customer_login.html';</script>";
+        echo "<script>window.location.href='../HTML/customer_login.html';</script>";
         exit();
     }
 
@@ -158,7 +158,7 @@
     </div>
 
     <div class="bottom-bar">
-        <a href="aboutpage.html">Need Support?</a>
+        <a href="../HTML/aboutpage.html">Need Support?</a>
     </div>
 
     
