@@ -8,7 +8,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
         $password = $_POST["password"];
         
         // Create connection
-        $conn = mysqli_connect("localhost", "root", "", "userinfo");
+        $conn = mysqli_connect("localhost", "root", "", "store_database");
 
         // Check connection
         if (!$conn) {
@@ -31,6 +31,11 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
             if ($row["password"] === $password) { 
                 $_SESSION["user"] = $email;
 
+
+                // Close connections
+                $stmt->close();
+                mysqli_close($conn); 
+                
                 echo "<script>window.location.href='index.php';</script>";
                 exit();
             } 
@@ -53,6 +58,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
 
 if (isset($errorMessage)) {
     echo "<script>window.location.href='customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
+    
 }
 
 ?>

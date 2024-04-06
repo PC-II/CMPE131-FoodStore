@@ -67,6 +67,12 @@
         .link a:hover {
             text-decoration: underline;
         }
+
+        .error-message {
+            color: red;
+            margin:  10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -75,10 +81,15 @@
     <div class="login-box">
         <h2>Employee Login</h2>
         <form action="employee_login.php" method="post">
-            <input type="text" name="eName" placeholder="Employee Name" required>
+            <input type="text" name="first_name" placeholder="Employee First Name" required>
+            <input type="text" name="last_name" placeholder="Employee Last Name" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
+
+        <div class="error-message" id="errorMessage">
+            
+        </div>
 
         <div class="link">
             <p>Are you a customer? <a href="customer_login.html">Customer Login</a></p>
@@ -90,6 +101,19 @@
 
     </div>
 </div>
+
+<script>
+    // Retrieve the error message from the query parameter
+    queryString = window.location.search;
+    urlParams = new URLSearchParams(queryString);
+    errorMessage = urlParams.get('error');
+
+    // Display the error message on the page
+    if (errorMessage) {
+      errorMessageElement = document.getElementById('errorMessage');
+      errorMessageElement.innerText = errorMessage;
+    }
+  </script>
 
 </body>
 </html>

@@ -23,11 +23,7 @@
             background-color: #ffffff;
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .login-box h2 {
-            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
         .login-box input[type="text"],
@@ -51,51 +47,28 @@
         }
 
         .login-box input[type="submit"]:hover {
-            background-color: #75e254;
+            background-color: #2baa04;
         }
 
-        .link {
+        .register-link {
             text-align: center;
             margin-top: 10px;
         }
 
-        .error-message {
-            text-align: center;
-            margin-top: 10px;
-            color: rgba(255, 0, 0, 0.74);
-        }
-
-        .link a {
+        .register-link a {
             color: #388022;
             text-decoration: none;
         }
 
-        .link a:hover {
+        .register-link a:hover {
             text-decoration: underline;
         }
 
-        .bottom-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
+        .error-message {
+            color: red;
+            margin:  10px;
+            text-align: center;
         }
-
-        .bottom-bar a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-
-        .bottom-bar a:hover {
-            color: #ccc;
-        }
-
     </style>
 </head>
 <body>
@@ -108,45 +81,35 @@
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
-
-        <div class = "error-message">
-            <p id="login-error-message"></p>
-        </div>
         
-        <div class="link">
+        <div class = "error-message" id= "errorMessage"></div>
+
+        <div class="register-link">
             <p>Don't have an account? <a href="customer_registration.html">Register</a></p>
         </div>
         
-        <div class="link">
+        <div class="register-link">
             <p>Employee? <a href="employee_login.html">Employee Login</a></p>
         </div>
-
-        <div class="link">
+        
+        <div class="register-link">
             <p><a href="index.php">Home Page</a></p>
         </div>
-
-        
-        <script>
-            // Retrieve the error message from the query parameter
-            queryString = window.location.search;
-            urlParams = new URLSearchParams(queryString);
-            errorMessage = urlParams.get('error');
-        
-            // Display the error message on the page
-            if (errorMessage) {
-              errorMessageElement = document.getElementById('login-error-message');
-              errorMessageElement.innerText = errorMessage;
-            }
-          </script>
-
     </div>
 </div>
 
-<div class="bottom-bar">
-    <a href="aboutpage.html">Need Support?</a>
-</div>
+<script>
+    // Retrieve the error message from the query parameter
+    queryString = window.location.search;
+    urlParams = new URLSearchParams(queryString);
+    errorMessage = urlParams.get('error');
+
+    // Display the error message on the page
+    if (errorMessage) {
+      errorMessageElement = document.getElementById('errorMessage');
+      errorMessageElement.innerText = errorMessage;
+    }
+  </script>
 
 </body>
 </html>
-
-
