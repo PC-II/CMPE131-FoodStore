@@ -54,7 +54,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
                 $register_stmt->close();
                 mysqli_close($conn); //closes connection
 
-                echo "<script>window.location.href='customer_login.html';</script>";
+                echo "<script>window.location.href='/HTML/customer_login.html';</script>";
                 exit();
             } 
             else 

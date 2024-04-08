@@ -58,7 +58,7 @@ if(isset($_POST["first_name"]) && isset($_POST["last_name"]) && isset($_POST["pa
 }
 
 if (isset($errorMessage)) {
-    echo "<script>window.location.href='employee_login.html?error=" . urlencode($errorMessage) . "';</script>";
+    echo "<script>window.location.href='/HTML/employee_login.html?error=" . urlencode($errorMessage) . "';</script>";
     
 }
 

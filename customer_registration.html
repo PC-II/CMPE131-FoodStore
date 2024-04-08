@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Page</title>
+    <!-- downloads jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <style>
         body {
             font-family: "Open Sans", sans-serif;
@@ -149,7 +151,7 @@
 <div class="container">
     <div class="registration-box">
         <h2> Customer Registration</h2>
-        <form action="customer_registration.php" method="post" onsubmit="return validatePassword()">
+        <form action="/PHP/customer_registration.php" method="post" onsubmit="return validatePassword()">
            
             <div class="textBox">
                 <div class="input-label">
@@ -222,6 +224,7 @@
             <p class="error-message" id="password-error-message" style="display: none;">Passwords do not match.</p>
             <input type="submit" value="Register">
         </form>
+
         <div class="error-message">
             <p id="registration-error-message"></p>
         </div>
@@ -231,7 +234,7 @@
         </div>
 
         <div class="link">
-            <p><a href="index.php">Home Page</a></p>
+            <p><a href="/index.php">Home Page</a></p>
         </div>
     </div>
 </div>
@@ -240,22 +243,61 @@
     <a href="aboutpage.html">Need Support?</a>
 </div>
 
+
+<!--Javascript for validating password match-->
 <script>
     function validatePassword() {
-        var password = document.getElementById("password").value;
-        var confirm_password = document.getElementById("confirm_password").value;
-        var error_message = document.getElementById("password-error-message");
+        var password = $('#password').val();
+        var confirm_password = $('#confirm_password').val();
+        var error_message = $('#password-error-message');
 
        if (password !== confirm_password) {
-            error_message.style.display = "block";
+            error_message.show();
+            event.preventDefault();
             return false;
         } else {
-            error_message.style.display = "none";
+            error_message.hide();
             return true;
         }
     }
 </script>
 
+<!--Javascript for phone number format -->
+<script>
+    // Format phone number as user types
+    $(document).ready(function() {
+        $('#phone').on('input', function() {
+            var phoneNumber = $(this).val().replace(/\D/g, '');
+            var phoneNumberFormatted = '';
+
+
+            
+            if (phoneNumber.length > 0) 
+            {
+                phoneNumberFormatted = '(' + phoneNumber.substring(0, 3) + ') ';
+                if (phoneNumber.length > 3) 
+                {
+                    phoneNumberFormatted += phoneNumber.substring(3, 6) + '-';
+                    if (phoneNumber.length > 6) 
+                    {
+                        phoneNumberFormatted += phoneNumber.substring(6, 10);
+                    }
+                }
+            }    
+            
+            if(event.key === "Backspace")
+            {
+                phoneNumberFormatted = phoneNumberFormatted.slice(0, -1);
+            }
+            $(this).val(phoneNumberFormatted);
+            
+
+
+        });
+    });
+</script>
+
+<!--Javascript for error message-->
 <script>
     // Retrieve the error message from the query parameter
     queryString = window.location.search;
@@ -264,8 +306,7 @@
 
     // Display the error message on the page
     if (errorMessage) {
-      errorMessageElement = document.getElementById('registration-error-message');
-      errorMessageElement.innerText = errorMessage;
+        $('#registration-error-message').text(errorMessage);
     }
   </script>
 

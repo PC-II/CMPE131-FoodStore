@@ -2,9 +2,9 @@
 session_start();
 
 if (isset($_SESSION["user"])) {
-    $email = $_SESSION["user"];
+    $customer_id = $_SESSION["user"];
 
-    // Create connection to userinfo
+    // Create connection to store database
     $conn = mysqli_connect("localhost", "root", "", "store_database");
 
     // Check connection
@@ -13,9 +13,9 @@ if (isset($_SESSION["user"])) {
     }
 
     // Prepare and bind to protect against SQL injection
-    $select_sql = "SELECT first_name, last_name, phone FROM customer_info WHERE email = ?";
+    $select_sql = "SELECT email, first_name, last_name, phone, street_name, apartment_number, city, state, zipcode FROM customer_info WHERE customer_id = ?";
     $select_stmt = $conn->prepare($select_sql);
-    $select_stmt->bind_param("s", $email);
+    $select_stmt->bind_param("s", $customer_id);
 
     // Execute the query
     $select_stmt->execute();
@@ -23,13 +23,22 @@ if (isset($_SESSION["user"])) {
 
     if ($select_result->num_rows > 0) {
         $customer = $select_result->fetch_assoc();
+        $email = $customer["email"];
         $first_name = $customer["first_name"];
         $last_name = $customer["last_name"];
         $phone = $customer["phone"];
+        $street_name = $customer["street_name"];
+        $apartment_number = $customer["apartment_number"];
+        $city = $customer["city"];
+        $state = $customer["state"];
+        $zipcode = $customer["zipcode"];
+
     }
 } else {
+
+    
     echo "User Not Signed in";
-    echo "<script>window.location.href='customer_login.php';</script>";
+    echo "<script>window.location.href='/HTML/customer_login.html';</script>";
     exit();
 }
 
@@ -40,13 +49,15 @@ mysqli_close($conn);
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information Page</title>
+     <!-- downloads jQuery -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <title>contact Information Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,8 +72,6 @@ mysqli_close($conn);
             align-items: left;
             height: 100vh;
         }
-
-
 
 
         .link {
@@ -138,11 +147,18 @@ mysqli_close($conn);
             padding: 20px;
         }
 
-        .user-info {
-            margin: 0rem;
+
+        .contact-info {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 10px;
+            
         }
 
-        .user-info input[type="submit"] {
+                        
+
+        .contact-info input[type="submit"] {
             width: 100%;
             padding: 10px;
             border: none;
@@ -152,29 +168,161 @@ mysqli_close($conn);
             cursor: pointer;
         }
 
-        .user-info input[type="submit"]:hover {
+        .contact-info input[type="submit"]:hover {
             background-color: #2baa04;
         }
 
-        .textBox {
-            display: inline-block;
-            margin-right:5rem;
-            margin-block: 2rem;
+        .delivery-info {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 10px;
+            
+        }
+
+        .delivery-info input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #75e254;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .delivery-info input[type="submit"]:hover {
+            background-color: #2baa04;
+        }
+
+        .past-order-info{
+            margin: 20px;
+        }
+
+        .text-box {
+            width: 200px;
+            padding: 10px;
 
         }
+
+        .info-container {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: start;
+            padding: 10px;
+            
+        }
+
     </style>
 </head>
 
 <body>
+    
 
     <div class="sidebar">
-        <a href="#profile" class="active">Profile</a>
-        <a href="#past-orders">Past Orders</a>
+        <a href="#contact-info" class="active">Contact Details</a>
+        <a href="#delivery-info">Delivery Information</a>
+        <a href="#past-order-info">Past Orders</a>
     </div>
 
     <div class="container">
         <div class="content">
-           
+            <!--contact Contact Details  -->
+            <div class="contact-info">
+                <h1>Contact Details</h1>
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>First Name </p>
+                    </div>
+                    <div class="text-box">
+                        <p><?= $first_name ?></p>
+                    </div>
+                </li>
+
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>Last Name </p>
+                    </div>
+                    <div class="text-box">
+                        <p><?= $last_name ?></p>
+                    </div>
+                </li>
+
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>Email </p>
+                    </div>
+                    <div class="text-box">
+                        <p><?= $email ?></p>
+                    </div>
+                </li>
+
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>Mobile Phone</p>
+                     </div>
+                    <div class="text-box">
+                         <p><?= $phone ?></p>
+                    </div>
+                </li>
+
+                <input type="submit" value="Edit Contact Details" class="edit-contact-info">
+                
+            </div>
+
+            <!-- contact Delivery Information -->
+            <div class="delivery-info">
+                <h1>Delivery Information</h1>
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>Street Name/Number </p>
+                    </div>
+                    <div class="text-box">
+                        <p><?= $street_name ?></p>
+                    </div>
+                </li>
+
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>Apartment Number </p>
+                    </div>
+                    <div class="text-box">
+                        <p><?= $apartment_number?></p>
+                    </div>
+                </li>
+
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>City </p>
+                    </div>
+                    <div class="text-box">
+                        <p><?= $city?></p>
+                    </div>
+                </li>
+
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>State </p>
+                     </div>
+                    <div class="text-box">
+                         <p><?= $state ?></p>
+                    </div>
+                </li>
+
+                <li class = "info-container">
+                    <div class="text-box">
+                        <p>Postal Code </p>
+                     </div>
+                    <div class="text-box">
+                         <p><?= $zipcode ?></p>
+                    </div>
+                </li>
+
+                <input type="submit" value="Edit Delivery Information">
+            </div>
+
+            
         </div>
     </div>
 
@@ -187,6 +335,7 @@ mysqli_close($conn);
 
 
     <script>
+
         // Retrieve the error message from the query parameter
         queryString = window.location.search;
         urlParams = new URLSearchParams(queryString);
@@ -194,66 +343,52 @@ mysqli_close($conn);
 
         // Display the error message on the page
         if (errorMessage) {
-            errorMessageElement = document.getElementById('registration-error-message');
+            errorMessageElement = $('registration-error-message');
             errorMessageElement.innerText = errorMessage;
         }
 
-        document.querySelectorAll('.sidebar a').forEach(link => {
-            link.addEventListener('click', clicked => {
-                document.querySelector('.sidebar a.active').classList.remove('active');
-                clicked.target.classList.add('active');
-                const tab = clicked.target.getAttribute('href').slice(1);
+        $(document).ready(function()
+        {   
+            //Initialize page to show contact info by default
+            $('.delivery-info').hide();    
+            $('.past-order-info').hide();
+            $('.contact-info').show();
 
-                if (tab === 'profile') {
-                    document.querySelector('.content').innerHTML = `
-                    <div class="user-info">
+            $(".edit-contact-info").click(function(){
+                $(".contact-info.text-box p").attr("contenteditable", true);
+            });
 
-<div class = "infoContainer">
-    <div class="textBox">
-        <p>First Name </p>
-    </div>
-    <div class="textBox">
-        <p><?php echo $first_name ?></p>
-    </div>
+            // Sidebar functionality
+            $('.sidebar a').click(function()
+            {
+                $('.sidebar a.active').removeClass('active');
+                $(this).addClass('active');
+                var tab = $(this).attr('href').slice(1);
 
-<div class = "infoContainer">
-    <div class="textBox">
-        <p>Last Name </p>
-    </div>
-    <div class="textBox">
-        <p><?php echo $last_name ?></p>
-    </div>
- </div>
-
- <div class = "infoContainer">
-    <div class="textBox">
-        <p>Email </p>
-    </div>
-    <div class="textBox">
-        <p><?php echo $email ?></p>
-    </div>
-
-    <div class = "infoContainer">
-    <div class="textBox">
-        <p>Mobile Phone</p>
-    </div>
-    <div class="textBox">
-        <p><?php echo $phone ?></p>
-    </div>
-
-</div>
-<input type="submit" value="edit">
-</div>
-
-    `;
+                if (tab === 'contact-info') 
+                {   
+                    $('.delivery-info').hide();    
+                    $('.past-order-info').hide();
+                    $('.contact-info').show();
                 }
-                else if(tab === 'past-orders'){
-                    document.querySelector('.content').innerHTML = '';
+                else if (tab === 'delivery-info') 
+                {
+                    $('.contact-info').hide();
+                    $('.past-order-info').hide();
+                    $('.delivery-info').show();  
+                }   
+                else if (tab === 'past-order-info') 
+                {
+                    $('.delivery-info').hide();   
+                    $('.contact-info').hide();
+                    $('.past-order-info').show();
                 }
-                
-
             });
         });
+
+
+             
+            
     </script>
 
 
