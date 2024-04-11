@@ -1,4 +1,7 @@
-
+const logoBtn = document.querySelector('#logo-button');
+logoBtn.addEventListener('click', () => {
+  location.assign("./index.php");
+})
 
 const loginBtn = document.querySelector("#login-button");
 if (loginBtn) {
@@ -22,7 +25,7 @@ accountBtn.addEventListener("click", () => {
 
 const categoriesBtn = document.querySelector('#categories-button');
 const dropdownMenu = document.querySelector('.dropdown');
-categoriesBtn.addEventListener('click', (e) => {
+categoriesBtn.addEventListener('click', () => {
   // open the dropdown menu for the categories
   dropdownMenu.classList.toggle('hidden')
 })

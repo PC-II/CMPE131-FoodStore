@@ -19,8 +19,7 @@
   </div>
 
   <div class="top-bar-1">
-    <img src="" alt="">
-    <h1 class="title">OGS</h1>
+    <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
     <section class="right">
 
       <section class="search-bar">
@@ -43,11 +42,11 @@
   <div class="top-bar-2">
     <h2 id="home-button">HOME</h2>
     <h2 id="explore-button">EXPLORE</h2>
-    <h2 id="categories-button">CATEGORIES</h2>
+    <h2 id="categories-button">CATEGORIES<i class='bx bx-chevron-down'></i></h2>
 
     <div class="dropdown hidden">
       <ul>
-        <li>Meat and Seafood</li>
+        <li>Meat & Seafood</li>
         <li>Vegetables</li>
         <li>Fruits</li>
         <li>Dairy</li>

@@ -43,20 +43,22 @@ body
   background: var(--ogs-green);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .top-bar-1 img
 {
   margin: 10px;
   height: 75px;
-  width: 125px;
+  width: 150px;
   background: black;
   left: 0px;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+
 }
-.top-bar-1 .title
+.top-bar-1 img:hover
 {
-  position: relative;
-  margin: auto;
-  transform: translateX(100%);
+  box-shadow: none;
 }
 .top-bar-1 .right
 {
@@ -83,14 +85,33 @@ body
   border-bottom-right-radius: 100px;
   transform: translate(-46px, 2px);
   background: white;
+  cursor: pointer;
 }
 
 .right i
 {
   font-size: 24px;
   padding: 10px;
+  cursor: pointer;
+}
+#search-button:hover
+{
+  transform: translate(-46px, 0px);
+  border: 2px solid black;
+}
+#cart-button, #account-button
+{
+  border-radius: 100%;
+}
+.right i:hover
+{
+  background: silver;
 }
 
+#login-button:hover, #logout-button:hover
+{
+  cursor: pointer;
+}
 
 .top-bar-2
 {
@@ -101,7 +122,7 @@ body
   margin-top: 150px;
   height: 50px;
   width: 100%;
-  background: gray;
+  background: white;
 }
 .top-bar-2 h2
 {
@@ -124,11 +145,14 @@ body
   background: gray;
   transition: ease 100ms;
 }
-
+.top-bar-2 h2 i
+{
+  font-size: 24px;
+}
 .dropdown
 {
   position: fixed;
-  background: gray;
+  background: white;
   top: 210px;
   left: 178px;
   border-radius: 10px;
@@ -163,7 +187,7 @@ body
 
 .main
 {
-  background: rgb(55 65 81);
+  background: rgb(222, 222, 222);
   position: absolute;
   height: 100%;
   width: 100%;
