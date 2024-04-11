@@ -39,7 +39,7 @@ document.addEventListener('click', (e) => {
     dropdownMenu.classList.add("hidden");
 });
 
-const aboutBtn = document.querySelector("#about-us-button");
+const aboutBtn = document.querySelector("#about-button");
 aboutBtn.addEventListener("click", () => {
   // open the about page
   location.assign("../HTML/aboutpage.html");

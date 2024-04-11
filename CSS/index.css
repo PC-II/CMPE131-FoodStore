@@ -120,16 +120,16 @@ body
   cursor: pointer;
 }
 
-.top-bar-2
+nav
 {
   z-index: 1;
   position: fixed;
   margin-top: 150px;
   height: 50px;
   width: 100%;
-  background: white;
+  /* border-bottom: 1px solid black; */
 }
-.top-bar-2 .bumper
+nav .bumper
 {
   max-width: 1280px;
   height: 100%;
@@ -137,7 +137,7 @@ body
   display: flex;
   align-items: center;
 }
-.top-bar-2 h2
+nav h2
 {
   padding: 0 10px;
   font-size: 18px;
@@ -148,17 +148,11 @@ body
   user-select: none;
   cursor: pointer;
 }
-.top-bar-2 h2:hover
+nav h2:hover
 {
   background: silver;
 }
-.top-bar-2 h2:focus
-{
-  color: silver;
-  background: gray;
-  transition: ease 100ms;
-}
-.top-bar-2 h2 i
+nav h2 i
 {
   font-size: 24px;
 }
@@ -208,27 +202,71 @@ body
 .main
 {
   z-index: 0;
-  background: rgb(222, 222, 222);
-  /* transform: translateY(200px); */
+  /* background: rgb(222, 222, 222); */
   width: 100%;
   margin-top: 200px;
 }
 
-.main .hero
+.main .try-delivery
 {
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.main .try-delivery div
+{
+  margin: auto;
+  user-select: none;
+}
+.main .try-delivery h1
+{
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 50px;
+  margin: 14px 0px;
+}
+.main .try-delivery h2
+{
+  margin: 12px 0px;
+  font-weight: 400;
+}
+.main .try-delivery button
+{
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: radial-gradient(farthest-corner at left, var(--ogs-green), lightgreen);
+  cursor: pointer;
+  font-size: large;
+  border: none;
+}
+.main .try-delivery button:hover
+{
+  background: radial-gradient(farthest-corner at right, var(--ogs-green), lightgreen);
+}
+.main .try-delivery button:focus
+{
+  outline: 3px solid var(--ogs-green);
+}
+.main .try-delivery button i
+{
+  transform: translateY(2px);
+  font-size: 20px;
+}
+.main .try-delivery span
+{
+  color: var(--ogs-green);
 }
 
 .main .carousel
 {
   width: 100%;
-
 }
 
 footer
 {
-  background: rgb(181, 181, 181);
+  background: rgb(222, 222, 222);
+  /* background: rgb(181, 181, 181); */
   margin: 10px;
+  margin-top: 20px;
   padding: 10px 0px;
   border-radius: 10px;
 }

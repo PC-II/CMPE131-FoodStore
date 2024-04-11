@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="top-bar-2">
+  <nav>
     <div class="bumper">
       <h2 id="home-button">HOME</h2>
       <h2 id="explore-button">EXPLORE</h2>
@@ -52,16 +52,18 @@
           <li>Dairy</li>
         </ul>
       </div>
-      <h2 id="about-us-button">ABOUT US</h2>
-      <h2 id="contact-button">CONTACT US</h2>
     </div>
-  </div>
+  </nav>
 
   <div class="bumper">
     <div class="main">
-      <div class="hero">
+      <div class="try-delivery">
+        <div>
+          <h1>Try our <span>brand new</span> delivery service!</h1>
+          <h2>Fast, Simple, and Affordable.</h2>
+          <button>Get started <i class='bx bx-right-arrow-alt'></i></button>
+        </div>
         <img src="../IMAGES/food_delivery.png" alt="food being delivered">
-
       </div>
       <div class="carousel">
       </div>
@@ -75,10 +77,10 @@
       <p>© 2024 <a href="./index.php">OGS Marketplace™</a>. All Rights Reserved.</p>
       <div>
         <ul>
-          <li>About</li>
+          <li id="about-button">About</li>
           <li>Privacy Policy</li>
           <li>Licensing</li>
-          <li>Contact</li>
+          <li id="contact-button">Contact</li>
         </ul>
       </div>
     </div>
