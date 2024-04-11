@@ -11,9 +11,14 @@
   --ogs-green: #43A047;
 }
 
+.dim
+{
+  opacity: 0.3;
+}
+
 body
 {
-  position: absolute;
+  position: relative;
   margin: 0;
   height: 100%;
   width: 100%;
@@ -122,6 +127,7 @@ body
 
 nav
 {
+  background: white;
   z-index: 1;
   position: fixed;
   margin-top: 150px;
@@ -165,7 +171,7 @@ nav h2 i
   border-radius: 10px;
   overflow: hidden;
   max-height: 180px;
-  transition: max-height ease 250ms
+  transition: max-height ease 250ms;
 }
 .dropdown ul
 {
@@ -198,38 +204,41 @@ nav h2 i
   margin: auto;
 }
 
-
-.main
+.space
 {
-  z-index: 0;
-  /* background: rgb(222, 222, 222); */
-  width: 100%;
-  margin-top: 200px;
+  height: 200px;
 }
 
-.main .try-delivery
+main
+{
+  z-index: 0;
+  width: 100%;
+}
+
+main .hero-delivery
 {
   display: flex;
   justify-content: space-between;
 }
-.main .try-delivery div
+main .hero-delivery div
 {
   margin: auto;
   user-select: none;
+  padding: 10px;
 }
-.main .try-delivery h1
+main .hero-delivery h1
 {
   font-size: 50px;
   font-weight: 900;
   line-height: 50px;
   margin: 14px 0px;
 }
-.main .try-delivery h2
+main .hero-delivery h2
 {
   margin: 12px 0px;
   font-weight: 400;
 }
-.main .try-delivery button
+main .hero-delivery button
 {
   padding: 10px 20px;
   border-radius: 10px;
@@ -238,35 +247,85 @@ nav h2 i
   font-size: large;
   border: none;
 }
-.main .try-delivery button:hover
+main .hero-delivery button:hover
 {
   background: radial-gradient(farthest-corner at right, var(--ogs-green), lightgreen);
 }
-.main .try-delivery button:focus
+main .hero-delivery button:focus
 {
   outline: 3px solid var(--ogs-green);
 }
-.main .try-delivery button i
+main .hero-delivery button i
 {
   transform: translateY(2px);
   font-size: 20px;
 }
-.main .try-delivery span
+main .hero-delivery span
 {
   color: var(--ogs-green);
 }
 
-.main .carousel
+main .carousel
+{
+  position: relative;
+  height: 800px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(222, 222, 222);
+}
+.carousel .arrows
 {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  opacity: 0.5;
+}
+.carousel .arrows button
+{
+  background: silver;
+  border-radius: 100%;
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+.carousel .arrows button:focus
+{
+  outline: 3px solid var(--ogs-green);
+}
+.carousel .arrows i
+{
+  cursor: pointer;
+  font-size: 50px;
+  transform: translateX(-6px);
+}
+.carousel .buttons
+{
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  bottom: 20px;
+  width: 200px;
+  opacity: 0.5;
+}
+.carousel .buttons button
+{
+  cursor: pointer;
+  border: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
+  background: gray;
 }
 
 footer
 {
   background: rgb(222, 222, 222);
-  /* background: rgb(181, 181, 181); */
-  margin: 10px;
-  margin-top: 20px;
+  margin: 20px 10px;
   padding: 10px 0px;
   border-radius: 10px;
 }

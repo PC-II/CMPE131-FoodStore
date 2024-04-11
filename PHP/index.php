@@ -55,22 +55,40 @@
     </div>
   </nav>
 
-  <div class="bumper">
-    <div class="main">
-      <div class="try-delivery">
+  <div class="space"></div>
+  
+  <main>
+    <div class="bumper">
+      <section class="hero-delivery">
         <div>
           <h1>Try our <span>brand new</span> delivery service!</h1>
           <h2>Fast, Simple, and Affordable.</h2>
           <button>Get started <i class='bx bx-right-arrow-alt'></i></button>
         </div>
         <img src="../IMAGES/food_delivery.png" alt="food being delivered">
-      </div>
-      <div class="carousel">
-      </div>
-  
-    </div>
+        </section>
+      
+      <section class="carousel">
+        <!-- images -->
 
-  </div>
+        <!-- left and right arrows -->
+        <div class="arrows">
+          <button><i class='bx bx-chevron-left' ></i></button>
+          <button><i class='bx bx-chevron-right' ></i></button>
+        </div>
+        <!-- Current image buttons -->
+        <div class="buttons">
+          <button id="carousel-button-1"></button>
+          <button id="carousel-button-2"></button>
+          <button id="carousel-button-3"></button>
+          <button id="carousel-button-4"></button>
+          <button id="carousel-button-5"></button>
+        </div>
+      </section>
+  
+      
+    </div>
+  </main>
 
   <footer>
     <div class="bumper">

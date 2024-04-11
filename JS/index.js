@@ -27,16 +27,19 @@ accountBtn.addEventListener("click", () => {
 
 const categoriesBtn = document.querySelector('#categories-button');
 const dropdownMenu = document.querySelector('.dropdown');
-const main = document.querySelector('.main');
+const main = document.querySelector('main');
 categoriesBtn.addEventListener('click', () => {
   // open the dropdown menu for the categories
   dropdownMenu.classList.toggle('hidden');
-  
+  main.classList.toggle('dim');
 });
 
 document.addEventListener('click', (e) => {
   if(!dropdownMenu.contains(e.target) && !categoriesBtn.contains(e.target))
+  {
     dropdownMenu.classList.add("hidden");
+    main.classList.remove('dim');
+  }  
 });
 
 const aboutBtn = document.querySelector("#about-button");
