@@ -13,9 +13,10 @@
 
 body
 {
+  position: absolute;
   margin: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 /* special offer on the top of the front page */
@@ -41,6 +42,11 @@ body
   height: 100px;
   width: 100%;
   background: var(--ogs-green);
+}
+.top-bar-1 .bumper
+{
+  max-width: 1280px;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,6 +64,7 @@ body
 }
 .top-bar-1 img:hover
 {
+  transform: translate(2px, 2px);
   box-shadow: none;
 }
 .top-bar-1 .right
@@ -117,12 +124,18 @@ body
 {
   z-index: 1;
   position: fixed;
-  display: flex;
-  align-items: center;
   margin-top: 150px;
   height: 50px;
   width: 100%;
   background: white;
+}
+.top-bar-2 .bumper
+{
+  max-width: 1280px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
 }
 .top-bar-2 h2
 {
@@ -151,10 +164,10 @@ body
 }
 .dropdown
 {
-  position: fixed;
+  position: absolute;
   background: white;
-  top: 210px;
-  left: 178px;
+  top: 60px;
+  transform: translateX(180px);
   border-radius: 10px;
   overflow: hidden;
   max-height: 180px;
@@ -185,12 +198,76 @@ body
   transition: ease 250ms
 }
 
-.main
+.bumper
 {
-  background: rgb(222, 222, 222);
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  transform: translateY(194px);
+  max-width: 1280px;
+  margin: auto;
 }
 
+
+.main
+{
+  z-index: 0;
+  background: rgb(222, 222, 222);
+  /* transform: translateY(200px); */
+  width: 100%;
+  margin-top: 200px;
+}
+
+.main .hero
+{
+  width: 100%;
+}
+
+.main .carousel
+{
+  width: 100%;
+
+}
+
+footer
+{
+  background: rgb(181, 181, 181);
+  margin: 10px;
+  padding: 10px 0px;
+  border-radius: 10px;
+}
+footer .bumper
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer p
+{
+  padding: 10px;
+}
+footer p a
+{
+  color: black;
+  text-decoration: none;
+}
+footer p a:hover
+{
+  text-decoration: underline;
+  cursor: pointer;
+}
+footer p a:active
+{
+  color: black;
+}
+footer ul
+{
+  display: flex;
+  list-style-type: none;
+}
+footer ul li
+{
+  padding: 0px 10px;
+}
+footer ul li:hover
+{
+  text-decoration: underline;
+  cursor: pointer;
+}

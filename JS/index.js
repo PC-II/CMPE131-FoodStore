@@ -1,7 +1,9 @@
-const logoBtn = document.querySelector('#logo-button');
-logoBtn.addEventListener('click', () => {
-  location.assign("./index.php");
-})
+const homeBtns = document.querySelectorAll('#logo-button, #home-button');
+homeBtns.forEach(button => {
+  button.addEventListener('click', () => {
+    location.assign("./index.php");
+  });
+});
 
 const loginBtn = document.querySelector("#login-button");
 if (loginBtn) {
@@ -25,15 +27,17 @@ accountBtn.addEventListener("click", () => {
 
 const categoriesBtn = document.querySelector('#categories-button');
 const dropdownMenu = document.querySelector('.dropdown');
+const main = document.querySelector('.main');
 categoriesBtn.addEventListener('click', () => {
   // open the dropdown menu for the categories
-  dropdownMenu.classList.toggle('hidden')
-})
+  dropdownMenu.classList.toggle('hidden');
+  
+});
 
 document.addEventListener('click', (e) => {
   if(!dropdownMenu.contains(e.target) && !categoriesBtn.contains(e.target))
     dropdownMenu.classList.add("hidden");
-})
+});
 
 const aboutBtn = document.querySelector("#about-us-button");
 aboutBtn.addEventListener("click", () => {
