@@ -9,7 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="../CSS/index.css"></link>
-
   <title>Food Store</title>
 </head>
 
@@ -42,18 +41,27 @@
   </div>
 
   <div class="top-bar-2">
-    <h2>HOME</h2>
+    <h2 id="home-button">HOME</h2>
     <h2 id="explore-button">EXPLORE</h2>
     <h2 id="categories-button">CATEGORIES</h2>
+
+    <div class="dropdown hidden">
+      <ul>
+        <li>Meat and Seafood</li>
+        <li>Vegetables</li>
+        <li>Fruits</li>
+        <li>Dairy</li>
+      </ul>
+    </div>
+
     <h2 id="about-us-button">ABOUT US</h2>
     <h2 id="contact-button">CONTACT US</h2>
-
 
 
   </div>
 
   <div class="main">
-    <img src="../IMAGES/main_placeholder.png" alt="">
+
   </div>
 
 </body>

@@ -1,6 +1,7 @@
-/* taking off all the automatic margins on the page */
+
 *
 {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
 
@@ -12,6 +13,7 @@
 
 body
 {
+  margin: 0;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -35,13 +37,12 @@ body
 {
   z-index: 1;
   position: fixed;
-  margin-top: 50px;
+  margin: 50px 0 0 0;
   height: 100px;
   width: 100%;
   background: var(--ogs-green);
   display: flex;
   align-items: center;
-  
 }
 .top-bar-1 img
 {
@@ -104,27 +105,68 @@ body
 }
 .top-bar-2 h2
 {
-  padding: 10px;
+  padding: 0 10px;
   font-size: 18px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
+  cursor: pointer;
+}
+.top-bar-2 h2:hover
+{
+  background: silver;
+}
+.top-bar-2 h2:focus
+{
+  color: silver;
+  background: gray;
+  transition: ease 100ms;
 }
 
+.dropdown
+{
+  position: fixed;
+  background: gray;
+  top: 210px;
+  left: 178px;
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 180px;
+  transition: max-height ease 250ms
+}
+.dropdown ul
+{
+  margin: 10px 0px;
+  list-style-type: none;
+  padding: 0;
+  user-select: none;
+}
+.dropdown ul li
+{
+  font-size: 20px;
+  padding: 8px 20px;
+  font-weight: 600;
+}
+.dropdown ul li:hover
+{
+  background: silver;
+  cursor: pointer;
+}
 
+.hidden
+{
+  max-height: 0px;
+  transition: ease 250ms
+}
 
 .main
 {
+  background: rgb(55 65 81);
   position: absolute;
-  background: white;
   height: 100%;
   width: 100%;
   transform: translateY(194px);
-}
-.main img
-{
-  width: 100%;
-  border: 1px solid black;
 }
 
