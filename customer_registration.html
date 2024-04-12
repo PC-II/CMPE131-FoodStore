@@ -6,60 +6,75 @@
     <title>Registration Page</title>
     <!-- downloads jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    
     <style>
         body {
             font-family: "Open Sans", sans-serif;
             font-weight: 400;
             background-color: #f4f4f4;
-            margin: 0;
+            margin: auto;
             padding: 0;
+            font-size: 16px;
+            
         }
 
         .container {
+            text-align: center;
+            display: table;
+            padding: 0;
+            background-color: #f4f4f4;
+            width: 750px;
+            margin-right: auto;
+            margin-left: auto;
+            scroll-margin-top: 50px;
+            scroll-margin-bottom: 100px;
+        }
+
+        li {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul{
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li input{
+            width: 100%;
         }
 
         .registration-box {
-            background-color: #ffffff;
-            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            box-shadow:  0px 1px 1px rgba(0, 0, 0, 0.05);
-            width: 50%;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            
         }
 
         .registration-box h2 {
             text-align: center; 
         }
 
-        .registration-box input[type="text"],
-        .registration-box input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            box-sizing: border-box;
-            box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
         .registration-box input[type="submit"] {
+            display: block;
             width: 100%;
-            padding: 10px;
+            padding: 1rem;
             border: none;
-            border-radius: 3px;
+            border-radius: 0.5rem;
             background-color: #75e254;
             color: #fff;
             cursor: pointer;
-            
+            margin: 0 auto;
         }
 
         .registration-box input[type="submit"]:hover {
             background-color: #2baa04;
-
         }
 
         .link {
@@ -82,149 +97,154 @@
             color: rgba(255, 0, 0, 0.74);
         }
 
-        .bottom-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-        }
 
-        .bottom-bar a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-
-        .bottom-bar a:hover {
-            color: #ccc;
-        }
-
-        .input-label {
-            display: inline-block;
+        .entry-div {
+            position: relative;
             width: 100%;
-            margin-bottom: 5px;
-        }
-
-        .textBox {
-            display: flex;
-            column-gap: 50px;
-            margin: 0 0 1rem;
-            
+            padding-top: 6px;
+            padding-bottom: 6px;
+            display: block;
             
         }
 
-
-        .textBox input {
-            flex: 1 1 100%;
-            margin-bottom: 5px;
+        .entry-div input[type="text"], .entry-div input[type="password"], select {
+            border-radius: 0.5rem;
+            background-color: #f2f2f2;
+            height: 40px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            color: #555;
+            box-sizing: border-box;
             border: 1px solid #a4a4a5;
-            padding: 0.5rem;
-
-        }
-
-        .city-state-zip-container {
-            display: flex;
-            column-gap: 50px;
-            margin: 0 0 1rem; 
+            font-size: 1rem;
+            font-weight: 400;
+            text-indent: 5px;
             
         }
+
+        .entry-div input[type="text"]:focus, .entry-div input[type="password"]:focus, select:focus {
+            outline: 0;
+            box-shadow: 0 0 5px #a4a4a5;
+            border: 1px solid #333;
+            background-color: #fff;
+            transition: box-shadow 0.15s, border-color 0.25s ease-in-out;
+        }
+
+        
+
+        
+
+        .contact-info-container {
+            max-width: 380px;
+            width: auto;
+            margin: 0 auto;
+            padding: 0;
+            text-align: left;
+        }
+
+        
 
         #state {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        box-sizing: border-box;
-        box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="registration-box">
-        <h2> Customer Registration</h2>
-        <form action="/PHP/customer_registration.php" method="post" onsubmit="return validatePassword()">
-           
-            <div class="textBox">
-                <div class="input-label">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
-                </div>
-            </div>
-            
-            <div class="textBox">
-                <div class="input-label">
-                    <labelfor="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Password"  required>
-                </div>
-            </div>
-            
-            <div class="textBox">
-                    <div class="input-label">
-                        <label for="confirm_password">Confirm Password</label>
-                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
-                    </div>
-            </div>
-           
-            
-            <div class="textBox">
-                <div class="input-label">
-                    <label for="first_name">First Name</label>
-                    <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
-                </div>
-                <div class="input-label">
-                    <label for="last_name">Last Name</label>
-                    <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
-                </div>
-            </div>
+        <h2>Customer Registration</h2>
 
-            <div class="textBox">
-                <div class="input-label">
-                    <label for="street_name">Street Name</label>
-                    <input type="text" name="street_name" id="street_name" placeholder="Street Name" required>
-                </div>
-                <div class="input-label">
-                    <label for="apartment_number">Apartment/Suite #</label>
-                    <input type="text" name="apartment_number" id="apartment_number" placeholder="Apartment/Suite Number">
-                </div>
-            </div>
-            <div class="city-state-zip-container">
-                <div class="input-label">
-                    <label for="city">City</label>
-                    <input type="text" name="city" id="city" placeholder="City" required>
-                </div>
-                <div class="input-label">
-                    <label for="state">State</label>
-                    <select name="state" id="state" placeholder="State" required>
-                        <option value = "CA">California</option>
-                    </select>
-                </div> 
-                <div class="input-label">
-                    <label for="zipcode">Zipcode</label>
-                    <input type="text" name="zipcode" id="zipcode" placeholder="Zipcode" required>
-                </div>
-            </div>
+        <div class="contact-info-container">
+            <form action="/PHP/customer_registration.php" method="post" onsubmit="return validatePassword()">
 
-            <div class="textBox">
-                <div class="input-label">
-                    <label for="phone">Phone Number</label>
-                    <input type="text" name="phone" id="phone" placeholder="Mobile Phone"  required>
-                </div>
-            </div>
-            
+                <ul style = "display: flex; flex-direction: column;">
 
-            <p class="error-message" id="password-error-message" style="display: none;">Passwords do not match.</p>
-            <input type="submit" value="Register">
-        </form>
+                    <!-- Email and password container -->
+                    <li class="text-box">
+                        <div class="entry-div">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
+                        </div>
+                    </li>
+                    <li class="text-box">
+                        <div class="entry-div">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                    </li>
+                    <li class="text-box">
+                        <div class="entry-div">
+                            <label for="confirm_password">Confirm Password</label>
+                            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                        </div>
+                    </li>
+                
+                
+                    <!-- First and last name container -->
+                    <li class="text-box" style="display: flex; column-gap: 25px;">
+                        <div class="entry-div" >
+                            <label for="first_name">First Name</label>
+                            <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+                        </div>
+                        <div class="entry-div" >
+                            <label for="last_name">Last Name</label>
+                            <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
+                        </div>
+                    </li>
 
+                    <!-- Phone Number -->
+                    <li class="text-box">
+                        <div class="entry-div">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" name="phone" id="phone" placeholder="Mobile Phone"  required>
+                        </div>
+                    </li>
+                
+                    <!-- Street name and apartment container -->
+                    <li class="text-box" style="display: flex; column-gap: 50px;">
+                        <div class="entry-div">
+                            <label for="street_name">Street Name</label>
+                            <input type="text" name="street_name" id="street_name" placeholder="Street Name" required>
+                        </div>
+                        <div class="entry-div" style="width: 45%; margin-right: auto;">
+                            <label for="apartment_number">Apt Num</label>
+                            <input type="text" name="apartment_number" id="apartment_number" placeholder="Apt Num">
+                        </div>
+                    </li>
+                
+                    <!-- City, State, zipcode container -->
+                    <li class="text-box" style="display: flex; column-gap: 25px;">
+                        <div class="entry-div">
+                            <label for="city">City</label>
+                            <input type="text" name="city" id="city" placeholder="City" required>
+                        </div>
+                        <div class="entry-div">
+                            <label for="state">State</label>
+                            <select name="state" id="state" placeholder="State" required>
+                                <option value="CA">California</option>
+                            </select>
+                        </div> 
+                        <div class="entry-div">
+                            <label for="zipcode">Zipcode</label>
+                            <input type="text" name="zipcode" id="zipcode" placeholder="Zipcode" required>
+                        </div>
+                    </li>
+                
+                
+        
+                    <p class="error-message" id="password-error-message" style="display: none;">Passwords do not match.</p>
+                    <input type="submit" value="Register">
+                </ul>
+            </form>
+        </div>
+        
         <div class="error-message">
             <p id="registration-error-message"></p>
         </div>
@@ -239,19 +259,14 @@
     </div>
 </div>
 
-<div class="bottom-bar">
-    <a href="aboutpage.html">Need Support?</a>
-</div>
-
-
-<!--Javascript for validating password match-->
+<!-- Javascript for validating password match -->
 <script>
     function validatePassword() {
         var password = $('#password').val();
         var confirm_password = $('#confirm_password').val();
         var error_message = $('#password-error-message');
 
-       if (password !== confirm_password) {
+        if (password !== confirm_password) {
             error_message.show();
             event.preventDefault();
             return false;
@@ -262,7 +277,7 @@
     }
 </script>
 
-<!--Javascript for phone number format -->
+<!-- Javascript for phone number format -->
 <script>
     // Format phone number as user types
     $(document).ready(function() {
@@ -270,34 +285,25 @@
             var phoneNumber = $(this).val().replace(/\D/g, '');
             var phoneNumberFormatted = '';
 
-
-            
-            if (phoneNumber.length > 0) 
-            {
+            if (phoneNumber.length > 0) {
                 phoneNumberFormatted = '(' + phoneNumber.substring(0, 3) + ') ';
-                if (phoneNumber.length > 3) 
-                {
+                if (phoneNumber.length > 3) {
                     phoneNumberFormatted += phoneNumber.substring(3, 6) + '-';
-                    if (phoneNumber.length > 6) 
-                    {
+                    if (phoneNumber.length > 6) {
                         phoneNumberFormatted += phoneNumber.substring(6, 10);
                     }
                 }
             }    
             
-            if(event.key === "Backspace")
-            {
+            if(event.key === "Backspace") {
                 phoneNumberFormatted = phoneNumberFormatted.slice(0, -1);
             }
             $(this).val(phoneNumberFormatted);
-            
-
-
         });
     });
 </script>
 
-<!--Javascript for error message-->
+<!-- Javascript for error message -->
 <script>
     // Retrieve the error message from the query parameter
     queryString = window.location.search;
@@ -308,7 +314,7 @@
     if (errorMessage) {
         $('#registration-error-message').text(errorMessage);
     }
-  </script>
+</script>
 
 </body>
 </html>

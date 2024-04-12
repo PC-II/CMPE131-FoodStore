@@ -55,10 +55,19 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../CSS/index.css"></link>
      <!-- downloads jQuery -->
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <title>contact Information Page</title>
     <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -116,6 +125,8 @@ mysqli_close($conn);
             color: #ccc;
         }
 
+        
+
         .sidebar {
             width: 200px;
             background-color: #333;
@@ -123,7 +134,7 @@ mysqli_close($conn);
             top: 0;
             left: 0;
             height: 100%;
-            overflow: auto;
+            
         }
 
         .sidebar a {
@@ -225,6 +236,8 @@ mysqli_close($conn);
         <a href="#delivery-info">Delivery Information</a>
         <a href="#past-order-info">Past Orders</a>
     </div>
+
+    <script src="../JS/index.js"></script>
 
     <div class="container">
         <div class="content">

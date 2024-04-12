@@ -5,48 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Login Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-box {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .login-box input[type="text"],
-        .login-box input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
+        * {
             box-sizing: border-box;
         }
 
-        .login-box input[type="submit"] {
+        body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        .container {
+            text-align: center;
+            display: table;
+            padding: 0;
+            width: 750px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .row {
+            vertical-align: middle;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        li {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul{
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li input{
             width: 100%;
-            padding: 10px;
+        }
+
+        .entry-div {
+            position: relative;
+            width: 100%;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            display: block;
+            
+            
+        }
+
+        .entry-div input[type="text"], .entry-div input[type="password"], select {
+            border-radius: 0.5rem;
+            background-color: #f2f2f2;
+            height: 40px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            color: #555;
+            box-sizing: border-box;
+            border: 1px solid #a4a4a5;
+            font-size: 1rem;
+            font-weight: 400;
+            text-indent: 5px;
+            
+        }
+
+        .entry-div input[type="text"]:focus, .entry-div input[type="password"]:focus, select:focus {
+            outline: 0;
+            box-shadow: 0 0 5px #a4a4a5;
+            border: 1px solid #333;
+            background-color: #fff;
+            transition: box-shadow 0.15s, border-color 0.25s ease-in-out;
+        }
+
+        .login-panel {
+            padding: 40px 30px;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+            height: 100%;
+            background-color: #fff;
+            margin: auto;
+            border-color: #ddd;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-panel-body {
+            max-width: 380px;
+            margin: 0 auto;
+            padding: 0;
+            text-align: left;
+            
+        }
+
+        .login-panel input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 1rem;
             border: none;
-            border-radius: 3px;
+            border-radius: 0.5rem;
             background-color: #75e254;
             color: #fff;
             cursor: pointer;
+            margin: 0 auto;
         }
 
-        .login-box input[type="submit"]:hover {
+        .login-panel input[type="submit"]:hover {
             background-color: #2baa04;
         }
 
@@ -64,6 +133,7 @@
             text-decoration: underline;
         }
 
+
         .error-message {
             color: red;
             margin:  10px;
@@ -73,29 +143,63 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="login-box">
-        <h2>Customer Login</h2>
-        <form action="/PHP/customer_login.php" method="post">
-            <input type="text" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Login">
-        </form>
-        
-        <div class = "error-message" id= "errorMessage"></div>
-
-        <div class="register-link">
-            <p>Don't have an account? <a href="customer_registration.html">Register</a></p>
-        </div>
-        
-        <div class="register-link">
-            <p>Employee? <a href="employee_login.html">Employee Login</a></p>
-        </div>
-        
-        <div class="register-link">
-            <p><a href="/index.php">Home Page</a></p>
+    <div id="header">
+        <div class="top-bar" style="display: block; height: 20vh;">
         </div>
     </div>
+
+<div class="container">
+    <div class="row">
+        <div id="account-login-text">
+            <h4 class="panel-headline" style="font-size: 2.5rem; margin-top: 0; margin-bottom: 0.5rem;">WELCOME TO OFS</h4>
+            <h5 class="panel-subhead" style="font-size: 1.25rem;">
+                Please sign in to your OFS account.
+            </h5>
+        </div>
+
+        <div class="login-panel">
+            <span class="login-panel-body">
+                <form action="/PHP/customer_login.php" method="post">
+                    <ul>
+                    <li class="text-box">
+                        <div class="entry-div">
+                            <label for="email">Email Address</label>
+                            <input type="text" name="email" placeholder="Email Address" required>
+                        </div>
+                    </li>
+                    <li class="text-box">
+                        <div class="entry-div">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
+                    </li>
+
+                    <li class="text-box">
+                        <input type="submit" value="Login">
+                    </li>
+
+                    <li class="text-box">
+                        <div class="error-message" id="errorMessage"></div>
+                        <div class="register-link">
+                            <p>Don't have an account? <a href="customer_registration.html">Register</a></p>
+                        </div>
+                        <div class="register-link">
+                            <p>Employee? <a href="employee_login.html">Employee Login</a></p>
+                        </div>
+                        <div class="register-link">
+                            <p><a href="/index.php">Home Page</a></p>
+                        </div>
+                    </li>
+                </ul>
+                </form>
+            </span>
+            
+            
+            
+
+        </div>
+    </div>
+    
 </div>
 
 <!-- Javascript to display error message -->
