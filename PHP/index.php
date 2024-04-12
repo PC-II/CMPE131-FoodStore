@@ -70,7 +70,13 @@
       
       <section class="carousel">
         <!-- images -->
-
+        <div class="images">
+          <div><img src="../IMAGES/free_delivery.png" alt="free delivery ad"></div>
+          <div><img src="" alt=""></div>
+          <div><img src="" alt=""></div>
+          <div><img src="" alt=""></div>
+          <div><img src="" alt=""></div>
+        </div>
         <!-- left and right arrows -->
         <div class="arrows">
           <button><i class='bx bx-chevron-left' ></i></button>
