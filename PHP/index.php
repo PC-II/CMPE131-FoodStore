@@ -12,14 +12,14 @@
   <title>Food Store</title>
 </head>
 
-<body>
-  <div class="top-bar-1">
+<body class="dark-body">
+  <div class="top-bar-1 dark-background" data-dark-mode="background">
     <div class="bumper">
-      <p>Shop and Enjoy our free delivery with orders 20lbs and under!</p>
-      <div class="switch">
+      <p class="dark-text" data-dark-mode="text">Shop and Enjoy our free delivery with orders 20lbs and under!</p>
+      <div class="switch" id="theme-toggle-button">
         <span class="selector"></span>
-        <i class='bx bxs-sun' id="sun-button"></i>
-        <i class='bx bxs-moon' id="moon-button"></i>
+        <i class='bx bxs-sun'></i>
+        <i class='bx bxs-moon'></i>
       </div>
     </div>
   </div>
@@ -34,24 +34,24 @@
           <i class='bx bx-search-alt' id="search-button"></i>
         </section>
   
-        <i class='bx bx-cart' id="cart-button"></i>
-        <i class='bx bx-user-circle' id="account-button" ></i>
+        <i class='bx bx-cart dark-text' id="cart-button" data-dark-mode="text"></i>
+        <i class='bx bx-user-circle dark-text' id="account-button" data-dark-mode="text" ></i>
   
         <?php if (isset($_SESSION["user"])): ?>
-          <h2 id="logout-button">Log Out</h2>
+          <h2 class="dark-text" id="logout-button" data-dark-mode="text">Log Out</h2>
         <?php else: ?>
-          <h2 id="login-button">Log In</h2>
+          <h2 class="dark-text" id="login-button" data-dark-mode="text">Log In</h2>
         <?php endif; ?>
       </section>
     </div>
   </div>
 
-  <nav>
+  <nav class="dark-background dark-text" data-dark-mode="both">
     <div class="bumper">
       <h2 id="home-button">HOME</h2>
       <h2 id="explore-button">EXPLORE</h2>
       <h2 id="categories-button">CATEGORIES<i class='bx bx-chevron-down'></i></h2>
-      <div class="dropdown hidden">
+      <div class="dropdown hidden dark-background dark-text" data-dark-mode="both">
         <ul>
           <li>Meat & Seafood</li>
           <li>Vegetables</li>
@@ -67,7 +67,7 @@
   <main>
     <div class="bumper">
       <section class="hero-delivery">
-        <div>
+        <div class="dark-text" data-dark-mode="text">
           <h1>Try our <span>brand new</span> delivery service!</h1>
           <h2>Fast, Simple, and Affordable.</h2>
           <button>Get started <i class='bx bx-right-arrow-alt'></i></button>
@@ -77,7 +77,7 @@
       
       <section class="carousel">
         <!-- images -->
-        <div class="slides">
+        <div class="slides dark-background" data-dark-mode="background">
           <div><img src="../IMAGES/free_delivery.png" alt="OGS free delivery ad"></div>
           <div><img src="../IMAGES/food_delivery.png" alt="2"></div>
           <div><img src="../IMAGES/OGS_logo.png" alt="3"></div>
@@ -103,7 +103,7 @@
     </div>
   </main>
 
-  <footer>
+  <footer class="dark-background dark-text" data-dark-mode="both">
     <div class="bumper">
       <p>© 2024 <a href="./index.php">OGS Marketplace™</a>. All Rights Reserved.</p>
       <div>

@@ -162,3 +162,57 @@ carouselBtns.forEach((button, i) => {
     intervalId = setInterval(autoplay, 4000);
   });
 });
+
+let prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const darkModeElements = document.querySelectorAll('[data-dark-mode]');
+const themeToggleBtn = document.querySelector('#theme-toggle-button');
+const body = document.querySelector('body');
+let themeToggleSelector = themeToggleBtn.querySelector('.selector');
+themeToggleBtn.addEventListener('click', () => {
+  if(themeToggleSelector.classList.contains('isDarkMode'))
+  {
+    body.style.background = `white`
+    darkModeElements.forEach(entry => {
+      if(entry.classList.contains('dark-background'))
+        entry.classList.remove('dark-background')
+      if(entry.classList.contains('dark-text'))
+        entry.classList.remove('dark-text')
+    })
+  }
+  else
+  {
+    body.style.background = `rgb(31 41 55)`
+    darkModeElements.forEach(entry => {
+      if(entry.dataset.darkMode == 'both')
+      {
+        entry.classList.add('dark-background');
+        entry.classList.add('dark-text');
+      }
+      else if(entry.dataset.darkMode == 'background')
+      {
+        entry.classList.add('dark-background');
+      }
+      else
+      {
+        entry.classList.add('dark-text');
+      }
+    })
+  }
+  themeToggleSelector.classList.toggle('isDarkMode');
+});
+
+// Use the prefersDarkMode variable to determine if dark mode is preferred
+// This will set the initial mode when the site is loaded
+if (prefersDarkMode) {
+  console.log("User prefers dark mode");
+  if(!themeToggleSelector.classList.contains('isDarkMode'))
+    themeToggleSelector.classList.add('isDarkMode');
+  // Apply dark mode styles
+} else {
+  console.log("User prefers light mode");
+  if(themeToggleSelector.classList.contains('isDarkMode'))
+    themeToggleSelector.classList.remove('isDarkMode');
+  // Apply light mode styles
+}
+
+
