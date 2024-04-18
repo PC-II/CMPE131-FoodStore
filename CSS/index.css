@@ -458,7 +458,7 @@ main .carousel
   background: silver;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   font-size: 30px;
   border-radius: 10px;
 }
@@ -467,11 +467,21 @@ main .carousel
   resize: none;
   outline: none;
   font-size: 20px;
-  width: 90%;
+  width: 1200px;
   border: none;
   border-radius: 10px;
   padding: 5px 10px;
   overflow-x: none;
+}
+.chat-bot .user-field #bot-submit-button
+{
+  border-radius: 100%;
+  padding: 7px;
+  cursor: pointer;
+}
+.chat-bot .user-field #bot-submit-button:hover
+{
+  background: rgb(169, 169, 169);
 }
 
 footer

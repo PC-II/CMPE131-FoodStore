@@ -110,7 +110,7 @@
         </div>
         <form class="user-field">
           <textarea placeholder="Type your prompt here..." name="user-input" id="user-input" rows="1"></textarea>
-          <i class='bx bx-send'></i>
+          <i class='bx bx-send' id="bot-submit-button"></i>
         </form>
         <div class="bot-response">
 
