@@ -6,7 +6,7 @@
         $email = $_SESSION["user"];
 
         // Create connection to userinfo
-        $conn = mysqli_connect("localhost", "root", "", "userinfo");
+        $conn = mysqli_connect("localhost", "root", "", "store_database");
 
         // Check connection
         if (!$conn) {

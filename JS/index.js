@@ -75,3 +75,90 @@ if(logoutBtn)
     });
   });
 }
+
+const carouselContainer = document.querySelector('.slides');
+const slides = document.querySelectorAll('.slides div');
+let activeSlide = 0;
+
+const carouselBtns = document.querySelectorAll('.carousel .buttons button');
+const updateCarouselButton = (index) => {
+  carouselBtns.forEach((button, i) => {
+    if(index == i)
+      button.style.background = `black`;
+    else
+      button.style.background = `gray`;
+  });
+}
+
+const slideLength = slides.length;
+const moveToSlide = (index) => {
+  slides.forEach((slide, i) => {
+    let translateAmount = i - index;
+    if(translateAmount > Math.floor(slides.length / 2))
+      translateAmount = translateAmount - slideLength;
+    else if(translateAmount < -1 * Math.floor(slides.length / 2))
+      translateAmount = translateAmount + slideLength;
+
+    if(i == index)
+    {
+      slide.style.scale = `none`;
+      slide.style.opacity = `1`;
+    }
+    else
+    {
+      slide.style.scale = `75%`;
+      slide.style.opacity = `0`;
+    }
+
+    if(translateAmount <= 1 && translateAmount >= -1)
+      slide.style.zIndex = `1`;
+    else
+      slide.style.zIndex = `0`;
+
+    if(Math.abs(index - activeSlide) > 1 && Math.abs(index - activeSlide) != slides.length - 1)
+      slide.style.transition = `none`;
+    else
+      slide.style.transition = `250ms ease-in-out`;
+
+    slide.style.transform = `translateX(${(translateAmount) * 100}%)`;
+  });
+  activeSlide = index;
+  updateCarouselButton(activeSlide);
+}
+// moves the carousel to the first slide on site load
+moveToSlide(0);
+
+const autoplay = () => {
+  activeSlide++;
+  if(activeSlide >= slides.length)
+    activeSlide = 0;
+  moveToSlide(activeSlide);
+}
+
+let intervalId = setInterval(autoplay, 4000);
+
+const arrows = document.querySelectorAll('.arrows button');
+arrows.forEach(arrow => {
+  arrow.addEventListener('click', () => {
+
+    clearInterval(intervalId);
+
+    const offset = arrow.id.includes('right') ?  1 : -1;
+    
+    let newIndex = activeSlide + offset;
+    
+    if(newIndex < 0) newIndex = slides.length - 1;
+    if(newIndex > slides.length - 1) newIndex = 0;
+
+    moveToSlide(newIndex);
+    intervalId = setInterval(autoplay, 4000);
+  });
+});
+
+carouselBtns.forEach((button, i) => {
+  button.addEventListener('click', () => {
+    clearInterval(intervalId);
+    moveToSlide(i);
+    intervalId = setInterval(autoplay, 4000);
+  });
+});

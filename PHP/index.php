@@ -13,11 +13,18 @@
 </head>
 
 <body>
-  <div class="offer-bar">
-    Shop and Enjoy our free delivery with orders 20lbs and under!
+  <div class="top-bar-1">
+    <div class="bumper">
+      <p>Shop and Enjoy our free delivery with orders 20lbs and under!</p>
+      <div class="switch">
+        <span class="selector"></span>
+        <i class='bx bxs-sun' id="sun-button"></i>
+        <i class='bx bxs-moon' id="moon-button"></i>
+      </div>
+    </div>
   </div>
 
-  <div class="top-bar-1">
+  <div class="top-bar-2">
     <div class="bumper">
       <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
       <section class="right">
@@ -70,25 +77,25 @@
       
       <section class="carousel">
         <!-- images -->
-        <div class="images">
-          <div><img src="../IMAGES/free_delivery.png" alt="free delivery ad"></div>
-          <div><img src="" alt=""></div>
-          <div><img src="" alt=""></div>
-          <div><img src="" alt=""></div>
-          <div><img src="" alt=""></div>
+        <div class="slides">
+          <div><img src="../IMAGES/free_delivery.png" alt="OGS free delivery ad"></div>
+          <div><img src="../IMAGES/food_delivery.png" alt="2"></div>
+          <div><img src="../IMAGES/OGS_logo.png" alt="3"></div>
+          <div><img src="" alt="4"></div>
+          <div><img src="" alt="5"></div>
         </div>
         <!-- left and right arrows -->
         <div class="arrows">
-          <button><i class='bx bx-chevron-left' ></i></button>
-          <button><i class='bx bx-chevron-right' ></i></button>
+          <button id="carousel-left-button"><i class='bx bx-chevron-left' ></i></button>
+          <button id="carousel-right-button"><i class='bx bx-chevron-right' ></i></button>
         </div>
         <!-- Current image buttons -->
         <div class="buttons">
-          <button id="carousel-button-1"></button>
-          <button id="carousel-button-2"></button>
-          <button id="carousel-button-3"></button>
-          <button id="carousel-button-4"></button>
-          <button id="carousel-button-5"></button>
+          <button></button>
+          <button></button>
+          <button></button>
+          <button></button>
+          <button></button>
         </div>
       </section>
   
@@ -112,5 +119,5 @@
 
 
 </body>
-<script src="../JS/index.js"></script>
+<script src="../JS/index.js" defer></script>
 </html>

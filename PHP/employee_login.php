@@ -8,7 +8,7 @@ if(isset($_POST["eName"]) && isset($_POST["password"]))
         $password = $_POST["password"];
         
         //create connection
-        $conn = mysqli_connect("localhost", "root", "","userinfo");
+        $conn = mysqli_connect("localhost", "root", "","store_database");
 
         //check connection
         if (!$conn)

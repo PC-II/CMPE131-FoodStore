@@ -13,7 +13,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
         $address = $_POST["address"];
         
         //create connection
-        $conn = mysqli_connect("localhost", "root", "","userinfo");
+        $conn = mysqli_connect("localhost", "root", "","store_database");
 
         //check connection
         if (!$conn)
