@@ -78,7 +78,7 @@
       <section class="carousel">
         <!-- images -->
         <div class="slides dark-background" data-dark-mode="background">
-          <div><img src="../IMAGES/free_delivery.png" alt="OGS free delivery ad"></div>
+          <div><img src="../IMAGES/free_delivery_ad.png" alt="OGS free delivery ad"></div>
           <div><img src="../IMAGES/food_delivery.png" alt="2"></div>
           <div><img src="../IMAGES/OGS_logo.png" alt="3"></div>
           <div><img src="" alt="4"></div>
