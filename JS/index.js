@@ -163,15 +163,15 @@ carouselBtns.forEach((button, i) => {
   });
 });
 
-let prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-const darkModeElements = document.querySelectorAll('[data-dark-mode]');
+let prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const darkModeElements = document.querySelectorAll('[data-dark-mode], dark-body');
 const themeToggleBtn = document.querySelector('#theme-toggle-button');
 const body = document.querySelector('body');
 let themeToggleSelector = themeToggleBtn.querySelector('.selector');
 themeToggleBtn.addEventListener('click', () => {
   if(themeToggleSelector.classList.contains('isDarkMode'))
   {
-    body.style.background = `white`
+    body.classList.remove('dark-body');
     darkModeElements.forEach(entry => {
       if(entry.classList.contains('dark-background'))
         entry.classList.remove('dark-background')
@@ -181,7 +181,7 @@ themeToggleBtn.addEventListener('click', () => {
   }
   else
   {
-    body.style.background = `rgb(31 41 55)`
+    body.classList.add('dark-body');
     darkModeElements.forEach(entry => {
       if(entry.dataset.darkMode == 'both')
       {
@@ -212,7 +212,21 @@ if (prefersDarkMode) {
   console.log("User prefers light mode");
   if(themeToggleSelector.classList.contains('isDarkMode'))
     themeToggleSelector.classList.remove('isDarkMode');
+  darkModeElements.forEach(element => {
+    if(element.dataset.darkMode == 'both')
+    {
+      element.classList.remove('dark-text');
+      element.classList.remove('dark-background');
+    }
+    else if(element.dataset.darkMode == 'text')
+    {
+      element.classList.remove('dark-text');
+    }
+    else
+    {
+      element.classList.remove('dark-background');
+    }
+  })
+  body.classList.remove('dark-body');
   // Apply light mode styles
 }
-
-

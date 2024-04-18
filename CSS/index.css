@@ -21,6 +21,7 @@ body
   margin: 0;
   height: 100%;
   width: 100%;
+  transition: 250ms ease-in-out;
 }
 
 /* special offer on the top of the front page */
@@ -446,7 +447,7 @@ footer ul li:hover
 
 [data-dark-mode], .dark-body
 {
-  transition: 250ms ease-out;
+  transition: 250ms ease-in-out;
 }
 
 .dark-body {
@@ -460,11 +461,6 @@ footer ul li:hover
 {
   color: white;
 }
-
-/* @media (prefers-color-scheme: dark) 
-{
-
-} */
 
 /* @media (max-width: 1280px) {
   body
