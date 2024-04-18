@@ -207,26 +207,50 @@ if (prefersDarkMode) {
   console.log("User prefers dark mode");
   if(!themeToggleSelector.classList.contains('isDarkMode'))
     themeToggleSelector.classList.add('isDarkMode');
+  darkModeElements.forEach(element => {
+    if(element.dataset.darkMode == 'both')
+    {
+      element.classList.add('dark-text');
+      element.classList.add('dark-background');
+    }
+    else if(element.dataset.darkMode == 'text')
+    {
+      element.classList.add('dark-text');
+    }
+    else
+    {
+      element.classList.add('dark-background');
+    }
+  })
+  body.classList.add('dark-body');
   // Apply dark mode styles
 } else {
   console.log("User prefers light mode");
   if(themeToggleSelector.classList.contains('isDarkMode'))
     themeToggleSelector.classList.remove('isDarkMode');
   darkModeElements.forEach(element => {
-    if(element.dataset.darkMode == 'both')
-    {
-      element.classList.remove('dark-text');
-      element.classList.remove('dark-background');
-    }
-    else if(element.dataset.darkMode == 'text')
-    {
-      element.classList.remove('dark-text');
-    }
-    else
-    {
-      element.classList.remove('dark-background');
-    }
+    if(element.classList.contains('dark-background'))
+      element.classList.remove('dark-background')
+    if(element.classList.contains('dark-text'))
+      element.classList.remove('dark-text')
   })
   body.classList.remove('dark-body');
   // Apply light mode styles
 }
+
+const userInput = document.querySelector('#user-input');
+userInput.addEventListener('keydown', (e) => {
+  if(e.keyCode == 13)
+  {
+    if (!e.shiftKey)
+    {
+      e.preventDefault();
+      alert('the shift key was not pressed and the form was submitted')
+    }
+    else
+    {
+      e.preventDefault();
+      userInput.value += '\n';
+    }
+  }
+})
