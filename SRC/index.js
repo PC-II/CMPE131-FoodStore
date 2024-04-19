@@ -273,7 +273,7 @@ userInput.addEventListener('keydown', async (e) => {
 
 const boxPrompts = [
   `<p class="box">What are some popular foods I can make for dinner?</p>`, 
-  `<p class="box">Im making chiliqueles tonight, what are some organic ingredients I might need?</p>`,
+  `<p class="box">Im making chilaquiles tonight, what are some organic ingredients I might need?</p>`,
   `<p class="box">What spices pair well with chicken parmesian?</p>`,
   `<p class="box">What's the difference between organic and conventionally grown produce?</p>`,
   `<p class="box">What are some substitutions I can make for an organic ingredient?</p>`,
