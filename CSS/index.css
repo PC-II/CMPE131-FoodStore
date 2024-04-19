@@ -454,24 +454,27 @@ main .carousel
 .chat-bot .user-field
 {
   position: relative;
-  min-height: 50px;
+  min-height: 60px;
   background: silver;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   font-size: 30px;
   border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
 }
 .chat-bot .user-field #user-input
 {
   resize: none;
   outline: none;
   font-size: 20px;
-  width: 1200px;
+  width: 100%;
   border: none;
   border-radius: 10px;
   padding: 5px 10px;
   overflow-x: none;
+  margin-right: 10px;
 }
 .chat-bot .user-field #bot-submit-button
 {
