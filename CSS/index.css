@@ -167,7 +167,7 @@ body
 }
 .top-bar-2 .right i:hover
 {
-  font-weight: 600;
+  background: silver;
   transition: none;
 }
 
@@ -208,9 +208,11 @@ nav h2
   justify-content: center;
   user-select: none;
   cursor: pointer;
+  transition: background 250ms ease;
 }
 nav h2:hover
 {
+  transition: none;
   background: silver;
 }
 nav h2 i
@@ -240,11 +242,13 @@ nav h2 i
   font-size: 20px;
   padding: 8px 20px;
   font-weight: 600;
+  transition: 250ms ease;
 }
 .dropdown ul li:hover
 {
   background: silver;
   cursor: pointer;
+  transition: none;
 }
 
 .hidden
@@ -438,7 +442,7 @@ main .carousel
 {
   background: silver;
   width: 140px;
-  height: 150px;
+  height: 160px;
   margin: 20px;
   border-radius: 10px;
   padding: 10px;
@@ -473,7 +477,6 @@ main .carousel
   border: none;
   border-radius: 10px;
   padding: 5px 10px;
-  overflow-x: none;
   margin-right: 10px;
 }
 .chat-bot .user-field #bot-submit-button
@@ -484,7 +487,69 @@ main .carousel
 }
 .chat-bot .user-field #bot-submit-button:hover
 {
+  transition: none;
   background: rgb(169, 169, 169);
+}
+.chat-bot .bot-field .waiting-balls
+{
+  max-height: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 10px;
+}
+.chat-bot .bot-field .waiting-balls div
+{
+  height: 30px;
+  width: 30px;
+  background: silver;
+  margin: 30px 10px;
+  border-radius: 100%;
+}
+.load
+{
+  animation: load 1000ms linear;
+  animation-iteration-count: infinite;
+}
+.load.l2
+{
+  animation-delay: 250ms;
+}
+.load.l3
+{
+  animation-delay: 500ms;
+}
+@keyframes load {
+
+  0%, 100% {transform: translateY(0px)}
+  25%, 75%  {transform: translateY(-10px)}
+  50% {transform: translateY(-12px)}
+}
+.response-area
+{
+  max-height: 0px;
+  margin: 10px;
+  overflow: hidden;
+}
+.user-query, .bot-response
+{
+  display: flex;
+  padding: 10px;
+}
+.user-query h1, .bot-response h1
+{
+  text-align: right;
+  width: 200px;
+  bottom: 0;
+}
+.user-query pre, .bot-response pre
+{
+  max-width: 1000px;
+  margin-top: 5px;
+  margin-left: 30px;
+  font-size: 20px;
+  text-wrap: wrap;
 }
 
 footer

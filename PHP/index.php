@@ -104,17 +104,33 @@
           <h1 data-dark-mode="text"><span>Welcome,</span><br>How can I help you?</h1>
         </div>
         <div class="suggestions">
-          <div class="box"><p>What are some popular foods I can make for dinner?</p></div>
-          <div class="box"><p>Im making chiliqueles tonight, what are some ingredients I might need?</p></div>
-          <div class="box"><p>What spices pair well with chicken parmesian?</p></div>
+          <!-- Suggestion boxes are placed here on load -->
+        </div>
+        <div class="bot-field">
+          <div class="waiting-balls hidden">
+            <div class="load l1"></div>
+            <div class="load l2"></div>
+            <div class="load l3"></div>
+          </div>
+          <div class="response-area">
+            <div class="user-query" data-dark-mode="text">
+              <h1>User: </h1>
+              <pre>
+                <!-- user query is placed here -->
+              </pre>
+            </div>
+            <div class="bot-response" data-dark-mode="text">
+              <h1>OGS Assistant: </h1>
+              <pre>
+                <!-- bot response is placed here -->
+              </pre>
+            </div>
+          </div>
         </div>
         <form class="user-field" data-dark-mode="background">
           <textarea placeholder="Type your prompt here..." name="user-input" id="user-input" rows="1"></textarea>
           <i class='bx bx-send' id="bot-submit-button" data-dark-mode="text"></i>
         </form>
-        <div class="bot-response">
-
-        </div>
       </section>
 
     </div>
@@ -136,5 +152,5 @@
 
 
 </body>
-<script src="../JS/index.js" defer></script>
+<script src="../JS/index.js" type="module" defer></script>
 </html>
