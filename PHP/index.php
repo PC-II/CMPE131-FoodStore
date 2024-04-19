@@ -108,9 +108,9 @@
           <div class="box"><p>Im making chiliqueles tonight, what are some ingredients I might need?</p></div>
           <div class="box"><p>What spices pair well with chicken parmesian?</p></div>
         </div>
-        <form class="user-field">
+        <form class="user-field" data-dark-mode="background">
           <textarea placeholder="Type your prompt here..." name="user-input" id="user-input" rows="1"></textarea>
-          <i class='bx bx-send' id="bot-submit-button"></i>
+          <i class='bx bx-send' id="bot-submit-button" data-dark-mode="text"></i>
         </form>
         <div class="bot-response">
 

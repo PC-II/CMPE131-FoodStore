@@ -453,9 +453,9 @@ main .carousel
 }
 .chat-bot .user-field
 {
+  background: silver;
   position: relative;
   min-height: 60px;
-  background: silver;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -540,13 +540,13 @@ footer ul li:hover
 }
 
 .dark-body {
-  background: rgb(31 41 55);
+  background: rgb(31 41 55) !important;
 }
 .dark-background
 {
-  background: rgb(17 24 39)
+  background: rgb(17 24 39) !important;
 }
 .dark-text
 {
-  color: white;
+  color: white !important;
 }
