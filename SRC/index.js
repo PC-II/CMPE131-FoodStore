@@ -42,6 +42,8 @@ document.addEventListener('click', (e) => {
     dropdownMenu.classList.add("hidden");
     main.classList.remove('dim');
   }
+  if(!boxes[0].contains(e.target) && !boxes[1].contains(e.target) && !boxes[2].contains(e.target))
+    resetActiveBoxes();
 });
 
 const aboutBtn = document.querySelector("#about-button");
@@ -247,18 +249,6 @@ userInput.addEventListener('keydown', async (e) => {
       if(userInput.value == '') return;
 
       waitingForResponse();
-      
-      // const response = await new Promise ((resolve, reject) => {
-      //   setTimeout(() => {
-      //     resolve(`Choosing the Method:
-
-      //     Use named exports if you want to export multiple functions from a module and allow the importing file to choose which functions to use.
-      //     Use default export if you only have one function to export from a module or if you want a simpler import syntax in the receiving file.`);
-      //   }, 2000);
-      // })
-
-    
-      // showResponse(response);
 
       const response = await generateResponse(userInput.value);
       showResponse(response);
@@ -321,17 +311,6 @@ botSubmitBtn.addEventListener('click', async () => {
   if(userInput.value == '') return;
 
   waitingForResponse();
-
-  // const response = await new Promise ((resolve, reject) => {
-  //   setTimeout(() => {
-  //     resolve(`Choosing the Method:
-
-  //     Use named exports if you want to export multiple functions from a module and allow the importing file to choose which functions to use.
-  //     Use default export if you only have one function to export from a module or if you want a simpler import syntax in the receiving file.`);
-  //   }, 2000);
-  // })
-
-  // showResponse(response);
 
   const response = await generateResponse(userInput.value);
   console.log(response);

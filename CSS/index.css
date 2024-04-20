@@ -453,7 +453,7 @@ main .carousel
 .chat-bot .suggestions .box:hover
 {
   cursor: pointer;
-  background: rgb(169, 169, 169);
+  opacity: 0.8;
 }
 .chat-bot .user-field
 {
@@ -531,6 +531,8 @@ main .carousel
   max-height: 0px;
   margin: 10px;
   overflow: hidden;
+  background: silver;
+  border-radius: 10px;
 }
 .user-query, .bot-response
 {

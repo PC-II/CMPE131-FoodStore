@@ -112,7 +112,7 @@
             <div class="load l2"></div>
             <div class="load l3"></div>
           </div>
-          <div class="response-area">
+          <div class="response-area" data-dark-mode="background">
             <div class="user-query" data-dark-mode="text">
               <h1>User: </h1>
               <pre>
