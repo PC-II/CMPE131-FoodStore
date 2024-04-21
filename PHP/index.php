@@ -30,7 +30,7 @@
       <section class="right">
   
         <section class="search-bar">
-          <input type="text" placeholder="What can we help you find?">
+          <input type="text" placeholder="What can we help you find?" maxlength="20">
           <i class='bx bx-search-alt' id="search-button"></i>
         </section>
   
