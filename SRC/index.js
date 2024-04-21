@@ -259,12 +259,23 @@ userInput.addEventListener('keydown', async (e) => {
       userInput.value += '\n';
     }
   }
-})
+
+  if(userInput.clientHeight !== userInput.scrollHeight)
+    userInput.style.height = `${userInput.scrollHeight - 10}px`;
+});
+
+userInput.addEventListener('keyup', (e) => {
+  if(e.key === `Backspace`)
+  {
+    userInput.style.height = `24px`;
+    userInput.style.height = `${userInput.scrollHeight - 10}px`;
+  }
+});
 
 const boxPrompts = [
   `<p class="box">What are some popular foods I can make for dinner?</p>`, 
   `<p class="box">I'm making chilaquiles tonight, what are some organic ingredients I might need?</p>`,
-  `<p class="box">What spices pair well with chicken parmesian?</p>`,
+  `<p class="box">What spices pair well with chicken parmesan?</p>`,
   `<p class="box">What's the difference between organic and conventionally grown produce?</p>`,
   `<p class="box">What are some substitutions I can make for an organic ingredient?</p>`,
   `<p class="box">How long will my organic groceries typically stay fresh?</p>`,
@@ -303,7 +314,8 @@ boxes.forEach(box => {
     box.style.background = `var(--ogs-green)`;
     userInput.value = box.textContent;
     userInput.focus();
-  })
+    userInput.style.height = `24px`;
+  });
 });
 
 const botSubmitBtn = document.getElementById('bot-submit-button');

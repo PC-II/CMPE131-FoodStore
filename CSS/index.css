@@ -449,6 +449,7 @@ main .carousel
   font-weight: 600;
   font-size: 20px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  user-select: none;
 }
 .chat-bot .suggestions .box:hover
 {
@@ -477,7 +478,14 @@ main .carousel
   border: none;
   border-radius: 10px;
   padding: 5px 10px;
-  margin-right: 10px;
+  margin: 20px 10px;
+  overflow: hidden;
+  scrollbar-width: none;
+  height: 24px;
+}
+.chat-bot .user-field #user-input::-webkit-scrollbar-button
+{
+  display: none;
 }
 .chat-bot .user-field #bot-submit-button
 {

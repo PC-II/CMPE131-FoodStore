@@ -114,7 +114,7 @@
           </div>
           <div class="response-area" data-dark-mode="background">
             <div class="user-query" data-dark-mode="text">
-              <h1>User: </h1>
+              <h1>You: </h1>
               <pre>
                 <!-- user query is placed here -->
               </pre>
