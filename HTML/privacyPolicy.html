@@ -11,7 +11,7 @@
 
   <div class="top-bar-2" style="margin-top: 0px;">
     <div class="bumper">
-      <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
+      <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button" href="../PHP/index.php">
     </div>
   </div>
 
@@ -58,4 +58,10 @@
     </div>
   </main>
 </body>
+<script>
+  const logo = document.getElementById('logo-button');
+  logo.addEventListener('click', () => {
+    location.assign('../PHP/index.php');
+  });
+</script>
 </html>
