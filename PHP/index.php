@@ -142,8 +142,8 @@
       <div>
         <ul>
           <li id="about-button">About</li>
-          <li>Privacy Policy</li>
-          <li>Licensing</li>
+          <li id="privacy-policy-button">Privacy Policy</li>
+          <li id="licensing-button">Licensing</li>
           <li id="contact-button">Contact</li>
         </ul>
       </div>

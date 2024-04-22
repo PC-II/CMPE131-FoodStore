@@ -58,6 +58,16 @@ contactBtn.addEventListener("click", () => {
   location.assign("../HTML/contact_us.html");
 });
 
+const privacyPolicyBtn = document.getElementById('privacy-policy-button');
+privacyPolicyBtn.addEventListener('click', () => {
+  location.assign('../HTML/privacyPolicy.html');
+})
+
+const licensingBtn = document.getElementById('licensing-button');
+licensingBtn.addEventListener('click', () => {
+  location.assign('../HTML/licensing.html');
+})
+
 const logoutBtn = document.querySelector("#logout-button");
 if(logoutBtn)
 {
