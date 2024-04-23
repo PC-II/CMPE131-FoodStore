@@ -137,6 +137,11 @@ body
   width: 300px;
   height: 24px;
   font-size: 18px;
+  border: 2px solid black;
+}
+.search-bar input:focus
+{
+  outline: 1px solid black;
 }
 .search-bar #search-button
 {

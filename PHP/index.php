@@ -30,7 +30,7 @@
       <section class="right">
   
         <section class="search-bar">
-          <input type="text" placeholder="What can we help you find?" maxlength="20">
+          <input type="text" placeholder="What can we help you find?" maxlength="30">
           <i class='bx bx-search-alt' id="search-button"></i>
         </section>
   
@@ -150,7 +150,7 @@
     </div>
   </footer>
 
-
 </body>
 <script src="../JS/index.js" type="module" defer></script>
+<script src="../JS/search.js" type="module" defer></script>
 </html>
