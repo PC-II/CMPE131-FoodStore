@@ -28,11 +28,17 @@
     <div class="bumper">
       <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
       <section class="right">
-  
-        <section class="search-bar">
-          <input type="text" placeholder="What can we help you find?" maxlength="30">
-          <i class='bx bx-search-alt' id="search-button"></i>
-        </section>
+
+        <div class="search-suggestions" data-dark-mode="both">
+          <ul>
+            <!-- suggestions are placed here depending on input field -->
+          </ul>
+        </div>
+
+        <form class="search-bar">
+          <input type="text" placeholder="What can we help you find?" maxlength="40">
+          <!-- <i class='bx bx-search-alt' id="search-button"></i> -->
+        </form>
   
         <i class='bx bx-cart' id="cart-button" data-dark-mode="text"></i>
         <i class='bx bx-user-circle' id="account-button" data-dark-mode="text" ></i>
