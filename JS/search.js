@@ -10,19 +10,18 @@ searchInput.addEventListener('input', () => {
     main.style.opacity = '0.3';
     searchSuggestions.classList.remove('hidden');
     searchSuggestions.style.maxHeight = `none`;
-    const results = queryDb(searchInput.value);
+    let results = queryDb(searchInput.value);
+    results = results.sort();
     results.forEach((result, i) => {
       if(i > 9) return;
-      suggestionDropdown.insertAdjacentHTML(`afterbegin`, `<li>${result}</li>`)
+      suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li>${result}</li>`)
     });
   }
   else
   {
-    main.style.opacity = '1';
+    main.style.opacity = ``;
     searchSuggestions.classList.add('hidden');
-  }  
-
-
+  }
 });
 
 
@@ -48,56 +47,56 @@ const queryDb = (q) => {
 }
 
 const testDb = [
-  'cilantro',
-  'strawberries',
-  'celery',
-  'raspberries',
-  'broccoli',
-  'blackberries',
-  'carrot',
-  'kale',
-  'cucumber',
-  'red bell pepper',
-  'romaine Lettuce', 
-  'baby Spinach',
-  'italian Parsley',
-  'boneless Skinless Chicken Breast',
-  'radish',
-  'italian Squash',
-  'cauliflower',
-  'canned Black Beans',
-  'honeycrisp Apple',
-  'bundle of Asparagus',
-  'chicken Boneless Thighs',
-  'sea Salt Blue Corn Tortilla Chips',
-  'gala Apple',
-  'green Cabbage',
-  'yellow Onion',
-  'low Sodium Garbanzo Beans',
-  'sweet Tomatoes',
-  'green Leaf Lettuce',
-  'lacinato Kale',
-  'garlic Bag',
-  'extra Firm Tofu',
-  'red Cabbage',
-  'brussel Sprouts',
-  'rainbow Carrots',
-  'red Beet',
-  'red Mango',
-  'cage Free Dozen Brown Eggs',
-  'green Peas',
-  'green Bell Peppers',
-  'beefsteak Tomato',
-  'fuji Apple',
-  'spaghetti Squash',
-  'baby Bella Mushrooms',
-  'russel Potato',
-  'baby Bok Choy',
-  'whole Grain Thin Sliced Bread',
-  'lemon',
-  'large Avocado',
-  'ground Turkey',
-  'grass-Fed 85% Lean Ground Beef',
-  'organic Original Almond Milk',
-  'organic Heavy Whipping Cream'
+  'Cilantro',
+  'Strawberries',
+  'Celery',
+  'Raspberries',
+  'Broccoli',
+  'Blackberries',
+  'Carrot',
+  'Kale',
+  'Cucumber',
+  'Red Bell Pepper',
+  'Romaine Lettuce', 
+  'Baby Spinach',
+  'Italian Parsley',
+  'Boneless Skinless Chicken Breast',
+  'Radish',
+  'Italian Squash',
+  'Cauliflower',
+  'Canned Black Beans',
+  'Honeycrisp Apple',
+  'Bundle of Asparagus',
+  'Chicken Boneless Thighs',
+  'Sea Salt Blue Corn Tortilla Chips',
+  'Gala Apple',
+  'Green Cabbage',
+  'Yellow Onion',
+  'Low Sodium Garbanzo Beans',
+  'Sweet Tomatoes',
+  'Green Leaf Lettuce',
+  'Lacinato Kale',
+  'Garlic Bag',
+  'Extra Firm Tofu',
+  'Red Cabbage',
+  'Brussel Sprouts',
+  'Rainbow Carrots',
+  'Red Beet',
+  'Red Mango',
+  'Cage Free Dozen Brown Eggs',
+  'Green Peas',
+  'Green Bell Peppers',
+  'Beefsteak Tomato',
+  'Fuji Apple',
+  'Spaghetti Squash',
+  'Baby Bella Mushrooms',
+  'Russel Potato',
+  'Baby Bok Choy',
+  'Whole Grain Thin Sliced Bread',
+  'Lemon',
+  'Large Avocado',
+  'Ground Turkey',
+  'Grass-Fed 85% Lean Ground Beef',
+  'Organic Original Almond Milk',
+  'Organic Heavy Whipping Cream'
 ]
