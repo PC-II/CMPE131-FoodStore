@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box h2 {
+        text-align: center; 
+    }
+
+        .login-box input[type="text"],
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .login-box input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #75e254;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .login-box input[type="submit"]:hover {
+            background-color: #75e254;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link a {
+            color: #388022;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="login-box">
+        <h2>Employee Login</h2>
+        <form action="../PHP/employee_login.php" method="post">
+            <input type="text" name="eName" placeholder="Employee Name" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+
+        <div class="link">
+            <p>Are you a customer? <a href="../HTML/customer_login.html">Customer Login</a></p>
+        </div>
+
+        <div class="link">
+            <p><a href="../PHP/index.php">Home Page</a></p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
