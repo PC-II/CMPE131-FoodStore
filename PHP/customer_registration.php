@@ -47,12 +47,14 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
 
             if($register_result) 
             {
-                echo "You were registered successfully :) ";
-                echo "\nRedirecting to login page...";
+                echo "<script>alert('You were registered successfully. Redirecting to Login Page... ');</script>";
+                sleep(3);
                 
                 $check_stmt->close();
                 $register_stmt->close();
                 mysqli_close($conn); //closes connection
+
+                
 
                 echo "<script>window.location.href='/HTML/customer_login.html';</script>";
                 exit();

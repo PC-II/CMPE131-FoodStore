@@ -36,7 +36,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
                 $stmt->close();
                 mysqli_close($conn); 
                 
-                echo "<script>window.location.href='/index.php';</script>";
+                echo "<script>window.location.href='/PHP/index.php';</script>";
                 exit();
             } 
             else {
