@@ -134,9 +134,8 @@ body
 {
   position: absolute;
   max-height: 0px;
-  top: 70px;
-  /* transform: translateX(950px); */;
-  left: 0px;
+  top: 100px;
+  transform: translateX(-10px);
   border-radius: 10px;
   background: rgb(241, 241, 241);
   overflow: hidden;
@@ -145,6 +144,7 @@ body
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 500px;
 }
 .search-suggestions ul
 {
@@ -152,9 +152,6 @@ body
   list-style-type: none;
   padding: 0;
   user-select: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 .search-suggestions ul li
 {

@@ -11,6 +11,10 @@ searchInput.addEventListener('input', () => {
     searchSuggestions.classList.remove('hidden');
     searchSuggestions.style.maxHeight = `none`;
     let results = queryDb(searchInput.value);
+    if(results.length == 0)
+    {
+      suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li style="color: gray;">Could not find result for "${searchInput.value}"</li>`)
+    }
     results = results.sort();
     results.forEach((result, i) => {
       if(i > 9) return;
@@ -29,20 +33,20 @@ const queryDb = (q) => {
   let list = [];
   q = q.toLowerCase();
   const qList = q.split(' ');
-  qList.forEach(qItem => {
+  qList.forEach((qItem, i) => {
     if(qItem == '') return;
     testDb.forEach(entry => {
       if(list.includes(entry)) return;
       let words = entry.toLowerCase();
+      if(i > 0 && !words.includes(qList[i - 1])) return;
       words = words.split(' ');
       words.forEach(word => {
         if(word.startsWith(qItem))
-        {
           list.push(entry);
-        }
-      })
-    })
+      });
+    });
   });
+
   return list;
 }
 
