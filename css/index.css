@@ -1,0 +1,627 @@
+*
+{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* variables */
+:root
+{
+  --ogs-green: #43A047;
+}
+
+.dim
+{
+  opacity: 0.3;
+  transition: 250ms ease;
+}
+
+body
+{
+  position: relative;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  transition: 250ms ease-in-out;
+}
+
+/* special offer on the top of the front page */
+.top-bar-1
+{
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background: white;
+  font-size: 24px;
+}
+.top-bar-1 .bumper
+{
+  position: relative;
+  max-width: 1280px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.top-bar-1 .switch
+{
+  position: absolute;
+  right: 0;
+  width: 60px;
+  background: gray;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 4px;
+  cursor: pointer;
+}
+.top-bar-1 .switch .selector
+{
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: white;
+  border-radius: 100%;
+  padding: 2px;
+  transform: translateX(35px);
+  transition: 250ms ease-in;
+}
+.isDarkMode
+{
+  background: black !important;
+  transform: translateX(0) !important;
+  transition: 250ms ease-in;
+}
+.top-bar-1 .switch i
+{
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  padding: 2px;
+}
+.bxs-moon
+{
+  color: white;
+}
+
+
+/* top bar menu */
+.top-bar-2
+{
+  z-index: 2;
+  position: fixed;
+  margin: 50px 0 0 0;
+  height: 100px;
+  width: 100%;
+  background: var(--ogs-green);
+}
+.top-bar-2 .bumper
+{
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-bar-2 img
+{
+  margin: 10px;
+  height: 75px;
+  width: 150px;
+  background: black;
+  left: 0px;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+.top-bar-2 img:hover
+{
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+.top-bar-2 .right
+{
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 550px;
+}
+
+.search-bar input
+{
+  border-radius: 100px;
+  padding: 10px;
+  width: 300px;
+  height: 24px;
+  font-size: 18px;
+}
+.search-bar #search-button
+{
+  position: fixed;
+  border-left: 1px solid black;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  transform: translate(-46px, 2px);
+  background: white;
+  cursor: pointer;
+}
+
+.right i
+{
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+}
+#search-button:hover
+{
+  transform: translate(-46px, 0px);
+  border: 2px solid black;
+}
+#cart-button, #account-button
+{
+  border-radius: 100%;
+  font-size: 28px;
+}
+.top-bar-2 .right i:hover
+{
+  background: silver;
+  transition: none;
+}
+
+#login-button, #logout-button
+{
+  margin-left: 5px;
+}
+#login-button:hover, #logout-button:hover
+{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+nav
+{
+  background: white;
+  z-index: 2;
+  position: fixed;
+  margin-top: 150px;
+  height: 50px;
+  width: 100%;
+}
+nav .bumper
+{
+  max-width: 1280px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+nav h2
+{
+  padding: 0 10px;
+  font-size: 18px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+  transition: background 250ms ease;
+}
+nav h2:hover
+{
+  transition: none;
+  background: silver;
+}
+nav h2 i
+{
+  font-size: 24px;
+}
+.dropdown
+{
+  position: absolute;
+  background: rgb(241, 241, 241);
+  top: 60px;
+  transform: translateX(180px);
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 180px;
+  transition: max-height ease 250ms;
+}
+.dropdown ul
+{
+  margin: 10px 0px;
+  list-style-type: none;
+  padding: 0;
+  user-select: none;
+}
+.dropdown ul li
+{
+  font-size: 20px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: 250ms ease;
+}
+.dropdown ul li:hover
+{
+  background: silver;
+  cursor: pointer;
+  transition: none;
+}
+
+.hidden
+{
+  max-height: 0px;
+  transition: max-height ease 250ms;
+  opacity: 0;
+}
+
+.bumper
+{
+  max-width: 1280px;
+  margin: auto;
+}
+
+.space
+{
+  height: 200px;
+}
+
+main
+{
+  z-index: 0;
+  width: 100%;
+  transition: 250ms ease;
+}
+
+main .hero-delivery
+{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+main .hero-delivery div
+{
+  margin: auto;
+  user-select: none;
+  padding: 10px;
+}
+main .hero-delivery h1
+{
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 50px;
+  margin: 14px 0px;
+}
+main .hero-delivery h2
+{
+  margin: 12px 0px;
+  font-weight: 400;
+}
+main .hero-delivery button
+{
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: radial-gradient(farthest-corner at left, var(--ogs-green), lightgreen);
+  cursor: pointer;
+  font-size: large;
+  border: none;
+}
+main .hero-delivery button:hover
+{
+  background: radial-gradient(farthest-corner at right, var(--ogs-green), lightgreen);
+}
+main .hero-delivery button:focus
+{
+  outline: 3px solid var(--ogs-green);
+}
+main .hero-delivery button i
+{
+  transform: translateY(2px);
+  font-size: 20px;
+}
+main .hero-delivery span
+{
+  color: var(--ogs-green);
+}
+
+main .carousel
+{
+  position: relative;
+  height: 720px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(222, 222, 222);
+  overflow: hidden;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
+}
+.carousel .slides
+{
+  width: 100%;
+  height: 100%;
+}
+.carousel .slides div
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 250ms ease-in-out;
+  opacity: 0;
+}
+.carousel .slides div > img
+{
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  font-size: 100px;
+}
+
+.carousel .arrows
+{
+  position: absolute;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.5;
+  z-index: 1;
+}
+.carousel .arrows button
+{
+  background: silver;
+  border-radius: 100%;
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+.carousel .arrows button:focus
+{
+  outline: 3px solid var(--ogs-green);
+}
+.carousel .arrows i
+{
+  cursor: pointer;
+  font-size: 50px;
+  transform: translateX(-6px);
+}
+.carousel .buttons
+{
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  bottom: 20px;
+  width: 200px;
+  opacity: 0.5;
+  z-index: 1;
+}
+.carousel .buttons button
+{
+  cursor: pointer;
+  border: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
+  background: gray;
+}
+
+/* ai chatbot section */
+.chat-bot
+{
+  width: 100%;
+  position: relative;
+  margin: 20px 0px;
+  /* background: rgb(55 65 81); */
+}
+.chat-bot .greeting
+{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+}
+.chat-bot .greeting h1 span
+{
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(45deg, var(--ogs-green), #41f1e2);
+  color: transparent;
+}
+.chat-bot .suggestions
+{
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.chat-bot .suggestions .box
+{
+  background: silver;
+  width: 140px;
+  height: 160px;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  user-select: none;
+}
+.chat-bot .suggestions .box:hover
+{
+  cursor: pointer;
+  opacity: 0.8;
+}
+.chat-bot .user-field
+{
+  background: silver;
+  position: relative;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 30px;
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+.chat-bot .user-field #user-input
+{
+  resize: none;
+  outline: none;
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 20px 10px;
+  overflow: hidden;
+  scrollbar-width: none;
+  height: 24px;
+}
+.chat-bot .user-field #user-input::-webkit-scrollbar-button
+{
+  display: none;
+}
+.chat-bot .user-field #bot-submit-button
+{
+  border-radius: 100%;
+  padding: 7px;
+  cursor: pointer;
+}
+.chat-bot .user-field #bot-submit-button:hover
+{
+  transition: none;
+  background: rgb(169, 169, 169);
+}
+.chat-bot .bot-field .waiting-balls
+{
+  max-height: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 10px;
+}
+.chat-bot .bot-field .waiting-balls div
+{
+  height: 30px;
+  width: 30px;
+  background: silver;
+  margin: 30px 10px;
+  border-radius: 100%;
+}
+.load
+{
+  animation: load 1000ms linear;
+  animation-iteration-count: infinite;
+}
+.load.l2
+{
+  animation-delay: 250ms;
+}
+.load.l3
+{
+  animation-delay: 500ms;
+}
+@keyframes load {
+
+  0%, 100% {transform: translateY(0px)}
+  25%, 75%  {transform: translateY(-10px)}
+  50% {transform: translateY(-12px)}
+}
+.response-area
+{
+  max-height: 0px;
+  margin: 10px;
+  overflow: hidden;
+  background: silver;
+  border-radius: 10px;
+}
+.user-query, .bot-response
+{
+  display: flex;
+  padding: 10px;
+}
+.user-query h1, .bot-response h1
+{
+  text-align: right;
+  width: 200px;
+  bottom: 0;
+}
+.user-query pre, .bot-response pre
+{
+  max-width: 1000px;
+  margin-top: 5px;
+  margin-left: 30px;
+  font-size: 20px;
+  text-wrap: wrap;
+}
+
+footer
+{
+  background: rgb(222, 222, 222);
+  margin: 20px 10px;
+  padding: 10px 0px;
+  border-radius: 10px;
+}
+footer .bumper
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer p
+{
+  padding: 10px;
+}
+footer p a
+{
+  color: inherit;
+  text-decoration: none;
+}
+footer p a:hover
+{
+  text-decoration: underline;
+  cursor: pointer;
+}
+footer p a:active
+{
+  color: black;
+}
+footer ul
+{
+  display: flex;
+  list-style-type: none;
+}
+footer ul li
+{
+  padding: 0px 10px;
+}
+footer ul li:hover
+{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+[data-dark-mode], .dark-body
+{
+  transition: 250ms ease-in-out;
+}
+
+.dark-body {
+  background: rgb(31 41 55) !important;
+}
+.dark-background
+{
+  background: rgb(17 24 39) !important;
+}
+.dark-text
+{
+  color: white !important;
+}

@@ -1,0 +1,12 @@
+.policy
+{
+  margin-top: 20px;
+}
+.policy h1, .policy h2, .policy h3, .policy p, .policy ul
+{
+  margin-bottom: 20px;
+}
+.policy li span
+{
+  font-weight: 600;
+}
