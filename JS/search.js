@@ -37,15 +37,22 @@ const queryDb = (q) => {
     if(qItem == '') return;
     testDb.forEach(entry => {
       if(list.includes(entry)) return;
-      let words = entry.toLowerCase();
-      if(i > 0 && !words.includes(qList[i - 1])) return;
-      words = words.split(' ');
+      const words = entry.toLowerCase().split(' ');
+      if(i > 0 && !words.includes(qList[0])) return;
       words.forEach(word => {
         if(word.startsWith(qItem))
           list.push(entry);
       });
     });
   });
+
+  list.forEach((item, i) => {
+    if(item.toLowerCase().startsWith(q))
+    {
+      // Move the element to the front
+      list.unshift(list.splice(i, 1)[0]);
+    }
+  })
 
   return list;
 }
