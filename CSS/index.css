@@ -148,6 +148,42 @@ body
   background: white;
   cursor: pointer;
 }
+.top-bar-2 .right .search-suggestions
+{
+  position: absolute;
+  max-height: 0px;
+  top: 100px;
+  transform: translateX(-10px);
+  border-radius: 10px;
+  background: rgb(241, 241, 241);
+  overflow: hidden;
+  transition: max-height ease 250ms;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 500px;
+}
+.search-suggestions ul
+{
+  margin: 10px 0px;
+  list-style-type: none;
+  padding: 0;
+  user-select: none;
+}
+.search-suggestions ul li
+{
+  font-size: 20px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: 250ms ease;
+}
+.search-suggestions ul li:hover
+{
+  background: silver;
+  cursor: pointer;
+  transition: none;
+}
 
 .right i
 {

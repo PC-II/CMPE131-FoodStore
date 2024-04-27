@@ -50,7 +50,8 @@ const queryDb = (q) => {
     if(item.toLowerCase().startsWith(q))
     {
       // Move the element to the front
-      list.unshift(list.splice(i, 1)[0]);
+      list.splice(i, 1);
+      list.unshift(list[i]);
     }
   })
 
