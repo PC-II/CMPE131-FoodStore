@@ -46,15 +46,6 @@ const queryDb = (q) => {
     });
   });
 
-  list.forEach((item, i) => {
-    if(item.toLowerCase().startsWith(q))
-    {
-      // Move the element to the front
-      list.splice(i, 1);
-      list.unshift(list[i]);
-    }
-  })
-
   return list;
 }
 

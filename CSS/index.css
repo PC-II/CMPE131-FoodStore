@@ -123,30 +123,12 @@ body
 }
 .top-bar-2 .right
 {
+  display: relative;
   margin: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 550px;
-}
-
-.search-bar input
-{
-  border-radius: 100px;
-  padding: 10px;
-  width: 300px;
-  height: 24px;
-  font-size: 18px;
-}
-.search-bar #search-button
-{
-  position: fixed;
-  border-left: 1px solid black;
-  border-top-right-radius: 100px;
-  border-bottom-right-radius: 100px;
-  transform: translate(-46px, 2px);
-  background: white;
-  cursor: pointer;
 }
 .top-bar-2 .right .search-suggestions
 {
@@ -185,6 +167,30 @@ body
   transition: none;
 }
 
+.search-bar input
+{
+  border-radius: 100px;
+  padding: 10px;
+  width: 300px;
+  height: 24px;
+  font-size: 18px;
+  border: 2px solid black;
+}
+.search-bar input:focus
+{
+  outline: 2px solid black;
+}
+.search-bar #search-button
+{
+  position: fixed;
+  border-left: 1px solid black;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  transform: translate(-46px, 2px);
+  background: white;
+  cursor: pointer;
+}
+
 .right i
 {
   font-size: 24px;
@@ -220,7 +226,7 @@ body
 nav
 {
   background: white;
-  z-index: 2;
+  z-index: 1;
   position: fixed;
   margin-top: 150px;
   height: 50px;
@@ -265,6 +271,7 @@ nav h2 i
   overflow: hidden;
   max-height: 180px;
   transition: max-height ease 250ms;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .dropdown ul
 {
@@ -375,6 +382,7 @@ main .carousel
   background: rgb(222, 222, 222);
   overflow: hidden;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
+  z-index: 0;
 }
 .carousel .slides
 {
