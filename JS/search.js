@@ -10,12 +10,11 @@ searchInput.addEventListener('input', () => {
     main.style.opacity = '0.3';
     searchSuggestions.classList.remove('hidden');
     searchSuggestions.style.maxHeight = `none`;
-    let results = queryDb(searchInput.value);
+    const results = queryDb(searchInput.value);
     if(results.length == 0)
     {
       suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li style="color: gray;">Could not find result for "${searchInput.value}"</li>`)
     }
-    results = results.sort();
     results.forEach((result, i) => {
       if(i > 9) return;
       suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li>${result}</li>`)
@@ -33,18 +32,21 @@ const queryDb = (q) => {
   let list = [];
   q = q.toLowerCase();
   const qList = q.split(' ');
-  qList.forEach((qItem, i) => {
+  qList.forEach(qItem => {
     if(qItem == '') return;
     testDb.forEach(entry => {
-      if(list.includes(entry)) return;
       const words = entry.toLowerCase().split(' ');
-      if(i > 0 && !words.includes(qList[0])) return;
       words.forEach(word => {
+        if(list.includes(entry)) return;
         if(word.startsWith(qItem))
           list.push(entry);
       });
     });
   });
+
+  const releventItems = list.filter(item => item.toLowerCase().startsWith(q)).sort();
+  const nonReleventItems = list.filter(item => !item.toLowerCase().startsWith(q)).sort();
+  list = [...releventItems, ...nonReleventItems];
 
   return list;
 }
