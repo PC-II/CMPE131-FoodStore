@@ -25,6 +25,14 @@ body
   transition: 250ms ease-in-out;
 }
 
+html
+{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* special offer on the top of the front page */
 .top-bar-1
 {
@@ -123,48 +131,11 @@ body
 }
 .top-bar-2 .right
 {
-  display: relative;
   margin: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 550px;
-}
-.top-bar-2 .right .search-suggestions
-{
-  position: absolute;
-  max-height: 0px;
-  top: 100px;
-  transform: translateX(-10px);
-  border-radius: 10px;
-  background: rgb(241, 241, 241);
-  overflow: hidden;
-  transition: max-height ease 250ms;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 500px;
-}
-.search-suggestions ul
-{
-  margin: 10px 0px;
-  list-style-type: none;
-  padding: 0;
-  user-select: none;
-}
-.search-suggestions ul li
-{
-  font-size: 20px;
-  padding: 8px 20px;
-  font-weight: 600;
-  transition: 250ms ease;
-}
-.search-suggestions ul li:hover
-{
-  background: silver;
-  cursor: pointer;
-  transition: none;
 }
 
 .search-bar input
@@ -174,11 +145,6 @@ body
   width: 300px;
   height: 24px;
   font-size: 18px;
-  border: 2px solid black;
-}
-.search-bar input:focus
-{
-  outline: 2px solid black;
 }
 .search-bar #search-button
 {
@@ -226,7 +192,7 @@ body
 nav
 {
   background: white;
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   margin-top: 150px;
   height: 50px;
@@ -271,7 +237,6 @@ nav h2 i
   overflow: hidden;
   max-height: 180px;
   transition: max-height ease 250ms;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .dropdown ul
 {
@@ -382,7 +347,6 @@ main .carousel
   background: rgb(222, 222, 222);
   overflow: hidden;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
-  z-index: 0;
 }
 .carousel .slides
 {
@@ -653,7 +617,7 @@ footer ul li:hover
   cursor: pointer;
 }
 
-[data-dark-mode], .dark-body
+[data-dark-mode], .dark-body, .dark-background, .dark-text, .dark-form, .dark-text-box
 {
   transition: 250ms ease-in-out;
 }
@@ -661,11 +625,26 @@ footer ul li:hover
 .dark-body {
   background: rgb(31 41 55) !important;
 }
+
 .dark-background
 {
   background: rgb(17 24 39) !important;
+
 }
 .dark-text
 {
   color: white !important;
 }
+
+.dark-form
+{
+  border: 1px solid #222!important;
+}
+
+.dark-text-box
+{
+  background-color: #333 !important;
+  color: #eee !important;          
+  border: 1px solid #312f50 !important;
+}
+
