@@ -16,7 +16,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
         }
 
         // Prepare and bind to protect against SQL injection
-        $stmt = $conn->prepare("SELECT customer_id, password FROM customer_info WHERE email = ?");
+        $stmt = $conn->prepare("SELECT password FROM customer_info WHERE email = ?");
         $stmt->bind_param("s", $email);
 
         // Execute query
@@ -29,14 +29,9 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
             $row = $result->fetch_assoc();
             // Check if password is correct
             if ($row["password"] === $password) { 
-                $_SESSION["user"] = $row["customer_id"];
-                
-                
-                // Close connections
-                $stmt->close();
-                mysqli_close($conn); 
-                
-                echo "<script>window.location.href='/PHP/index.php';</script>";
+                $_SESSION["user"] = $email;
+
+                echo "<script>window.location.href='../PHP/index.php';</script>";
                 exit();
             } 
             else {
@@ -57,8 +52,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
 }
 
 if (isset($errorMessage)) {
-    echo "<script>window.location.href='/HTML/customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
-    
+    echo "<script>window.location.href='../HTML/customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
 }
 
-
+?>
