@@ -81,8 +81,8 @@
           <div><img src="../IMAGES/free_delivery_ad.png" alt="OGS free delivery ad"></div>
           <div><img src="../IMAGES/food_delivery.png" alt="2"></div>
           <div><img src="../IMAGES/OGS_logo.png" alt="3"></div>
-          <div><img src="" alt="4"></div>
-          <div><img src="" alt="5"></div>
+          <div><img src="../IMAGES/image_four.jpg" alt="4"></div>
+          <div><img src="../IMAGES/image_five.png" alt="5"></div>
         </div>
         <!-- left and right arrows -->
         <div class="arrows">
