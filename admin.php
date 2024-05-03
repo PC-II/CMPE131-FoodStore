@@ -7,11 +7,12 @@ if(isset($_POST['add_product'])){
    $p_price = $_POST['p_price'];
    $p_weight = $_POST['p_weight'];
    $p_quantity = $_POST['p_quantity'];
+   $p_category = $_POST['p_category'];
    $p_image = $_FILES['p_image']['name'];
    $p_image_tmp_name = $_FILES['p_image']['tmp_name'];
    $p_image_folder = 'images/'.$p_image;
 
-   $insert_query = mysqli_query($conn, "INSERT INTO `products`(name, price, weight, quantity, image) VALUES('$p_name', '$p_price', '$p_weight', '$p_quantity', '$p_image')") or die('query failed');
+   $insert_query = mysqli_query($conn, "INSERT INTO `products`(name, price, weight, quantity, image, category) VALUES('$p_name', '$p_price', '$p_weight', '$p_quantity', '$p_image', '$p_category')") or die('query failed');
 
    if($insert_query){
       move_uploaded_file($p_image_tmp_name, $p_image_folder);
@@ -39,11 +40,12 @@ if(isset($_POST['update_product'])){
    $update_p_price = $_POST['update_p_price'];
    $update_p_weight = $_POST['update_p_weight'];
    $update_p_quantity = $_POST['update_p_quantity'];
+   $update_p_category = $_POST['update_p_category'];
    $update_p_image = $_FILES['update_p_image']['name'];
    $update_p_image_tmp_name = $_FILES['update_p_image']['tmp_name'];
    $update_p_image_folder = 'images/'.$update_p_image;
 
-   $update_query = mysqli_query($conn, "UPDATE `products` SET name = '$update_p_name', price = '$update_p_price', weight = '$update_p_weight', quantity = '$update_p_quantity', image = '$update_p_image' WHERE id = '$update_p_id'");
+   $update_query = mysqli_query($conn, "UPDATE `products` SET name = '$update_p_name', price = '$update_p_price', weight = '$update_p_weight', quantity = '$update_p_quantity', category = '$update_p_category', image = '$update_p_image' WHERE id = '$update_p_id'");
 
    if($update_query){
       move_uploaded_file($update_p_image_tmp_name, $update_p_image_folder);
@@ -81,16 +83,16 @@ if(isset($message)){
 
 ?>
 
-<div class="container">
 
 <section>
 
 <form action="" method="post" class="add-product-form" enctype="multipart/form-data">
    <h3>Add new item</h3>
    <input type="text" name="p_name" placeholder="enter the product name" class="box" required>
-   <input type="number" name="p_price" min="0" placeholder="enter the product price" class="box" required>
-   <input type="number" name="p_weight" min="0" placeholder="enter the product weight" class="box" required>
+   <input type="number" step="any" name="p_price" min="0" placeholder="enter the product price" class="box" required>
+   <input type="number" step="any" name="p_weight" min="0" placeholder="enter the product weight" class="box" required>
    <input type="number" name="p_quantity" min="0" placeholder="enter the product quantity" class="box" required>
+   <input type="text" name="p_category" min="0" placeholder="enter the product category" class="box" required>
    <input type="file" name="p_image" accept="image/png, image/jpg, image/jpeg" class="box" required>
    <input type="submit" value="add the product" name="add_product" class="btn">
 </form>
@@ -107,6 +109,7 @@ if(isset($message)){
          <th>product price</th>
          <th>product weight</th>
          <th>product quantity</th>
+         <th>product category</th>
          <th>action</th>
       </thead>
 
@@ -121,9 +124,10 @@ if(isset($message)){
          <tr>
             <td><img src="images/<?php echo $row['image']; ?>" height="100" alt=""></td>
             <td><?php echo $row['name']; ?></td>
-            <td>$<?php echo $row['price']; ?>/-</td>
+            <td>$<?php echo $row['price']; ?></td>
             <td><?php echo $row['weight']; ?> lbs</td>
-            <td><?php echo $row['quantity']; ?> /100</td>
+            <td><?php echo $row['quantity']; ?></td>
+            <td><?php echo $row['category']; ?></td>
             <td>
                <a href="admin.php?delete=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('are your sure you want to delete this?');"> <i class="fas fa-trash"></i> delete </a>
                <a href="admin.php?edit=<?php echo $row['id']; ?>" class="option-btn"> <i class="fas fa-edit"></i> update </a>
@@ -138,8 +142,8 @@ if(isset($message)){
          ?>
       </tbody>
    </table>
-
 </section>
+
 
 <section class="edit-form-container">
 
@@ -156,9 +160,10 @@ if(isset($message)){
       <img src="images/<?php echo $fetch_edit['image']; ?>" height="200" alt="">
       <input type="hidden" name="update_p_id" value="<?php echo $fetch_edit['id']; ?>">
       <input type="text" class="box" required name="update_p_name" value="<?php echo $fetch_edit['name']; ?>">
-      <input type="number" min="0" class="box" required name="update_p_price" value="<?php echo $fetch_edit['price']; ?>">
-      <input type="number" min="0" class="box" required name="update_p_weight" value="<?php echo $fetch_edit['weight']; ?>">
+      <input type="number" step="any" min="0" class="box" required name="update_p_price" value="<?php echo $fetch_edit['price']; ?>">
+      <input type="number" step="any" min="0" class="box" required name="update_p_weight" value="<?php echo $fetch_edit['weight']; ?>">
       <input type="number" min="0" class="box" required name="update_p_quantity" value="<?php echo $fetch_edit['quantity']; ?>">
+      <input type="text" class="box" required name="update_p_category" value="<?php echo $fetch_edit['category']; ?>">
       <input type="file" class="box" required name="update_p_image" accept="image/png, image/jpg, image/jpeg">
       <input type="submit" value="update the product" name="update_product" class="btn">
       <input type="reset" value="cancel" id="close-edit" class="option-btn">
@@ -176,8 +181,6 @@ if(isset($message)){
 </div>
 
 </section>
-
-<script src="js/script.js"></script>
 
 </body>
 </html>
