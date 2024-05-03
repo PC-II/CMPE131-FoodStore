@@ -28,11 +28,17 @@
     <div class="bumper">
       <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
       <section class="right">
-  
-        <section class="search-bar">
-          <input type="text" placeholder="What can we help you find?">
-          <i class='bx bx-search-alt' id="search-button"></i>
-        </section>
+
+        <div class="search-suggestions" data-dark-mode="both">
+          <ul>
+            <!-- suggestions are placed here depending on input field -->
+          </ul>
+        </div>
+
+        <form class="search-bar">
+          <input type="text" placeholder="What can we help you find?" maxlength="40">
+          <!-- <i class='bx bx-search-alt' id="search-button"></i> -->
+        </form>
   
         <i class='bx bx-cart' id="cart-button" data-dark-mode="text"></i>
         <i class='bx bx-user-circle' id="account-button" data-dark-mode="text" ></i>
@@ -104,17 +110,33 @@
           <h1 data-dark-mode="text"><span>Welcome,</span><br>How can I help you?</h1>
         </div>
         <div class="suggestions">
-          <div class="box"><p>What are some popular foods I can make for dinner?</p></div>
-          <div class="box"><p>Im making chiliqueles tonight, what are some ingredients I might need?</p></div>
-          <div class="box"><p>What spices pair well with chicken parmesian?</p></div>
+          <!-- Suggestion boxes are placed here on load -->
+        </div>
+        <div class="bot-field">
+          <div class="waiting-balls hidden">
+            <div class="load l1"></div>
+            <div class="load l2"></div>
+            <div class="load l3"></div>
+          </div>
+          <div class="response-area" data-dark-mode="background">
+            <div class="user-query" data-dark-mode="text">
+              <h1>You: </h1>
+              <pre>
+                <!-- user query is placed here -->
+              </pre>
+            </div>
+            <div class="bot-response" data-dark-mode="text">
+              <h1>OGS Assistant: </h1>
+              <pre>
+                <!-- bot response is placed here -->
+              </pre>
+            </div>
+          </div>
         </div>
         <form class="user-field" data-dark-mode="background">
           <textarea placeholder="Type your prompt here..." name="user-input" id="user-input" rows="1"></textarea>
           <i class='bx bx-send' id="bot-submit-button" data-dark-mode="text"></i>
         </form>
-        <div class="bot-response">
-
-        </div>
       </section>
 
     </div>
@@ -126,15 +148,15 @@
       <div>
         <ul>
           <li id="about-button">About</li>
-          <li>Privacy Policy</li>
-          <li>Licensing</li>
+          <li id="privacy-policy-button">Privacy Policy</li>
+          <li id="licensing-button">Licensing</li>
           <li id="contact-button">Contact</li>
         </ul>
       </div>
     </div>
   </footer>
 
-
 </body>
-<script src="../JS/index.js" defer></script>
+<script src="../JS/index.js" type="module" defer></script>
+<script src="../JS/search.js" type="module" defer></script>
 </html>
