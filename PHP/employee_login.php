@@ -1,58 +1,65 @@
 <?php
-//check if employee ename and password are provided
-if(isset($_POST["eName"]) && isset($_POST["password"]))
-{
-    if($_POST["eName"] && $_POST["password"])
-    {
-        $eName = $_POST["eName"];
+session_start();
+
+// Check if email and password are provided
+if(isset($_POST["first_name"]) && isset($_POST["last_name"]) && isset($_POST["password"])) {
+    if($_POST["first_name"] && $_POST["last_name"]&& $_POST["password"]) {
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
         $password = $_POST["password"];
         
-        //create connection
-        $conn = mysqli_connect("localhost", "root", "","store_database");
+        // Create connection
+        $conn = mysqli_connect("localhost", "root", "", "store_database");
 
-        //check connection
-        if (!$conn)
-        {
-            die(("Connection failed: ") . mysqli_connect_error());
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
         }
 
-        //prepare and bind to protect against sql injection
-        $stmt = $conn->prepare("SELECT password FROM employee_info WHERE eName = ?");
-        $stmt->bind_param("s", $eName);
+        // Prepare and bind to protect against SQL injection
+        $stmt = $conn->prepare("SELECT password FROM employee_info WHERE first_name = ? AND last_name = ?");
+        $stmt->bind_param("ss", $first_name, $last_name); 
 
-        //execute query
+        // Execute query
         $stmt->execute();
 
-        //get result
+        // Get result
         $result = $stmt->get_result();
 
-        if($result->num_rows === 1)
-        {
+        if($result->num_rows === 1) {
             $row = $result->fetch_assoc();
-            //check if password is correct
-            if ($row["password"] === $password)
-            { 
+            // Check if password is correct
+            if ($row["password"] === $password) { 
+                $_SESSION["user"] = $first_name;
+
+
+                // Close connections
+                $stmt->close();
+                mysqli_close($conn); 
                 
-                echo "Logged in Successfully.";
-                echo "\r\n". "Redirecting to employee page...";
+                echo "<script>window.location.href='employee_page.php';</script>";
+                exit();
+            } 
+            else {
+                $errorMessage = "Password incorrect";
             }
-            else
-            {
-                echo "Password incorrect";
-            }
-        }
-        else
-        {
-            echo "User does not exist";
+        }  
+        else {
+            $errorMessage = "Employee does not exist";
         }
 
-        //close connections
+        // Close connections
         $stmt->close();
         mysqli_close($conn); 
     } 
-    else 
-    {
-        echo "Email or password is empty.";
+    else {
+        $errorMessage = "Name or password is empty.";
     }
 }
+
+if (isset($errorMessage)) {
+    echo "<script>window.location.href='/HTML/employee_login.html?error=" . urlencode($errorMessage) . "';</script>";
+    
+}
+
 ?>
