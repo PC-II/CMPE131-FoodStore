@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-section {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            /* width: 50%; */
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-image {
+            width: 75%;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .about-section h1
+        {
+            font-size: 30px;
+        }
+
+        .about-section p
+        {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .values-section {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            /* width: 50%; */
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .values-section h1 {
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .values-section ul
+        {
+            list-style-type: none;
+            padding: 0px;
+            font-size: 18px;
+        }
+
+        .values-section li {
+            margin-bottom: 5px;
+        }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer ul
+        {
+            padding-left: 0px;
+        }
+
+        footer i
+        {
+            font-size: 26px;
+            padding: 0px;
+        }
+
+    </style>
+</head>
+<body>
+  <div class="top-bar-2" style="margin-top: 0px;">
+    <div class="bumper">
+        <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
+    </div>
+  </div>
+
+  <div class="space" style="height: 100px;"></div>
+  
+  <main>
+    <div class="bumper">
+        <section class="about-section">
+            <h1>Welcome to OGS</h1>
+            <!-- <img src="about-us-image.jpg" alt="OGS Team" class="about-image"> -->
+            <p>OGS is more than just a food online store; it's a journey into the heart of culinary excellence. Founded in 2024 by a group of passionate food enthusiasts, our mission is to bring the finest and most unique service from around the world right to your doorstep.</p>
+            <p>We believe in quality, authenticity, and the power of food to bring people together. Our carefully curated selection includes organic and sustainably sourced products, and artisanal treats crafted with love and tradition.</p>
+            <p>Join us as we explore new tastes, celebrate old traditions, and discover the stories behind the producers who make our food so special. Welcome to our community of food lovers. Welcome to OGS.</p>
+        </section>
+        <section class="values-section">
+            <h1>Our Values</h1>
+            <ul>
+                <li><strong>Quality:</strong> We never compromise on the quality of our products. Every item is hand-picked and tested by our team.</li>
+                <li><strong>Sustainability:</strong> We are committed to responsible sourcing and support small-scale producers and farmers.</li>
+                <li><strong>Community:</strong> OGS is not just a store; it's a community of food lovers and culinary adventurers.</li>
+            </ul>
+        </section>
+    </div>
+  </main>
+   <footer>
+       <p>Connect with us on social media</p>
+       <ul>
+           <li><i class='bx bxl-facebook-circle'></i></li>
+           <li><i class='bx bxl-instagram' ></i></li>
+           <li><i class='bx bxl-twitter' ></i></li>
+       </ul>
+   </footer>
+</body>
+<script>
+    const logo = document.getElementById('logo-button');
+    logo.addEventListener('click', () => {
+      location.assign('../PHP/index.php');
+    });
+</script>
+</html>
