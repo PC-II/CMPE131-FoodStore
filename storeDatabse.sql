@@ -33,16 +33,6 @@ CREATE TABLE store_inventory (
     item_image  VARCHAR(255)
 );
 
-CREATE TABLE orders_history (
-    order_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_id INT,
-    items VARCHAR(255) NOT NULL,
-    total_weight DECIMAL(10, 2) NOT NULL,
-    total_cost DECIMAL(10, 2) NOT NULL,
-    address VARCHAR(255) NOT NULL,
-    date_time DATETIME NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customer_info(customer_id)
-);
 
 CREATE TABLE cart (
   id int(255) NOT NULL,
