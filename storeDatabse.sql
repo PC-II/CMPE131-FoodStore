@@ -62,7 +62,7 @@ CREATE TABLE orders_history (
   city VARCHAR(255),
   state VARCHAR(255),
   zipcode VARCHAR(255),
-  total_product INT,
+  total_product VARCHAR(255),
   total_price VARCHAR(255),
   PRIMARY KEY (order_id)
 );
