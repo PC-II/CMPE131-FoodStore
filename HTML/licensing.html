@@ -86,7 +86,7 @@
   </main>
   <footer data-dark-mode="both">
     <div class="bumper">
-      <p>© 2024 <a href="./index.php">OGS Marketplace™</a>. All Rights Reserved.</p>
+      <p>© 2024 <a href="../PHP/index.php">OGS Marketplace™</a>. All Rights Reserved.</p>
       <div>
         <ul>
           <li id="about-button">About</li>
@@ -102,6 +102,22 @@
   const logo = document.getElementById('logo-button');
   logo.addEventListener('click', () => {
     location.assign('../PHP/index.php');
+  });
+  const about = document.getElementById('about-button');
+  about.addEventListener('click', () => {
+    location.assign('../HTML/aboutpage.html');
+  });
+  const privacy = document.getElementById('privacy-policy-button');
+  privacy.addEventListener('click', () => {
+    location.assign('../HTML/privacyPolicy.html');
+  });
+  const licensing = document.getElementById('licensing-button');
+  licensing.addEventListener('click', () => {
+    location.assign('../HTML/licensing.html');
+  });
+  const contact = document.getElementById('contact-button');
+  contact.addEventListener('click', () => {
+    location.assign('../HTML/contact_us.html');
   });
 </script>
 </html>
