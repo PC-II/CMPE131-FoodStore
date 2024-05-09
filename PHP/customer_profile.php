@@ -106,16 +106,9 @@ if ($result->num_rows > 0) {
     <nav data-dark-mode="both">
         <div class="bumper">
             <h2 id="home-button">HOME</h2>
-            <h2 id="explore-button">EXPLORE</h2>
-            <h2 id="categories-button">CATEGORIES<i class='bx bx-chevron-down'></i></h2>
-            <div class="dropdown hidden" data-dark-mode="both">
-                <ul>
-                    <li>Meat & Seafood</li>
-                    <li>Vegetables</li>
-                    <li>Fruits</li>
-                    <li>Dairy</li>
-                </ul>
-            </div>
+            <h2 id="explore-button"><a href = "../PHP/productpage.php">EXPLORE</a></h2>
+            
+            
         </div>
     </nav>
 

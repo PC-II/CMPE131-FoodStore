@@ -18,7 +18,7 @@ if (loginBtn) {
 const cartBtn = document.querySelector("#cart-button");
 cartBtn.addEventListener("click", () => {
   // open the shopping cart page
-  location.assign("../HTML/shoppingcart.html");
+  location.assign("../PHP/shoppingcart.php");
 });
 
 const accountBtn = document.querySelector("#account-button");

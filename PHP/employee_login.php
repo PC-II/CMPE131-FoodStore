@@ -39,6 +39,7 @@ if(isset($_POST["first_name"]) && isset($_POST["last_name"])  && isset($_POST["p
                 echo "Logged in Successfully.";
                 echo "\r\n". "Redirecting to employee page...";
 
+                $_SESSION["admin"] = "true";
                 echo "<script>window.location.href='../PHP/admin.php';</script>";
                 exit();
             }

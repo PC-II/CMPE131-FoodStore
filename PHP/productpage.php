@@ -220,7 +220,7 @@ $(document).ready(function(){
         const suggestions = $('.search-suggestions li');
           suggestions.each(function() {
             $(this).on('click', function() {
-              alert($(this).text());
+              product = $(this).text();
               const productsContainer = $('.box-container');
               productsContainer.html('');
               if (product.item_quantity > 0) {

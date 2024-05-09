@@ -50,7 +50,7 @@ if(isset($_POST['order_btn'])){
          <div class='order-detail'>
             <span>".$total_product."</span>
             <span class='total'> Total : $".$price_total."</span>
-            <span class='total'> Weight : $".$weight_total."</span>
+            <span class='total'> Weight : ".$weight_total." Lbs</span>
          </div>
          <div class='customer-details'>
             <p> your name : <span>".$name."</span> </p>
@@ -112,10 +112,10 @@ if(isset($_POST['order_btn'])){
       <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
       <section class="right">
   
-        <section class="search-bar">
+        <!-- <section class="search-bar">
           <input type="text" placeholder="What can we help you find?" maxlength="20">
           <i class='bx bx-search-alt' id="search-button"></i>
-        </section>
+        </section> -->
   
         <i class='bx bx-cart' id="cart-button" data-dark-mode="text"></i>
         <i class='bx bx-user-circle' id="account-button" data-dark-mode="text" ></i>
@@ -132,14 +132,14 @@ if(isset($_POST['order_btn'])){
   <nav data-dark-mode="both">
     <div class="bumper">
       <h2 id="home-button">HOME</h2>
-      <h2 id="explore-button">EXPLORE</h2>
-      <h2 id="categories-button">CATEGORIES<i class='bx bx-chevron-down'></i></h2>
+      <h2 id="explore-button"><a href = "../PHP/productpage.php"></a>EXPLORE</h2>
+      <h2 id="categories-button">CATEGORIES<i class='bx bx-chevron-down'></i></h2>  
       <div class="dropdown hidden" data-dark-mode="both">
         <ul>
-          <li>Meat & Seafood</li>
-          <li>Vegetables</li>
-          <li>Fruits</li>
-          <li>Dairy</li>
+          <li><a href = "../PHP/productpage.php">Meat & Seafood</a></li>
+          <li><a href = "../PHP/productpage.php">Vegetables</a></li>
+          <li><a href = "../PHP/productpage.php">Fruits</a></li>
+          <li><a href = "../PHP/productpage.php"></a>Dairy</li>
         </ul>
       </div>
     </div>

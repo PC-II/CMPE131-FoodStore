@@ -1,14 +1,16 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["admin"])) {
-    echo "User Not Signed in";
-    echo "<script>window.location.href='/HTML/employee_login.html';</script>";
-    exit();
- }
- else {
-    include 'config.php';
- }
+// if (!isset($_SESSION["admin"])) {
+//     echo "User Not Signed in";
+//     echo "<script>window.location.href='/HTML/employee_login.html';</script>";
+//     exit();
+//  }
+//  else {
+//     include 'config.php';
+//  }
+
+ include 'config.php';
 ?>
 
 

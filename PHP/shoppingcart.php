@@ -1,28 +1,34 @@
 <?php
 session_start();
-@include 'config.php';
+include 'config.php';
 
-
-
-if(isset($_POST['update_update_btn'])){
+if(!isset($_SESSION["user"])) {
+  echo "User Not Signed in";
+  echo "<script>window.location.href='/HTML/customer_login.html';</script>";
+  exit();
+}
+else {
+  if(isset($_POST['update_update_btn'])){
   
-   $update_value = $_POST['update_quantity'];
-   $update_id = $_POST['update_quantity_id'];
-   $update_quantity_query = mysqli_query($conn, "UPDATE `cart` SET quantity = '$update_value' WHERE id = '$update_id'");
-   if($update_quantity_query){
-      header('location:shoppingcart.php');
-   };
-};
-
-if(isset($_GET['remove'])){
-   $remove_id = $_GET['remove'];
-   mysqli_query($conn, "DELETE FROM `cart` WHERE id = '$remove_id'");
-   header('location:shoppingcart.php');
-};
-
-if(isset($_GET['delete_all'])){
-   mysqli_query($conn, "DELETE FROM `cart`");
-   header('location:shoppingcart.php');
+    $update_value = $_POST['update_quantity'];
+    $update_id = $_POST['update_quantity_id'];
+    $update_quantity_query = mysqli_query($conn, "UPDATE `cart` SET quantity = '$update_value' WHERE id = '$update_id'");
+    if($update_quantity_query){
+       header('location:shoppingcart.php');
+    };
+ };
+ 
+ if(isset($_GET['remove'])){
+    $remove_id = $_GET['remove'];
+    mysqli_query($conn, "DELETE FROM `cart` WHERE id = '$remove_id'");
+    header('location:shoppingcart.php');
+ };
+ 
+ if(isset($_GET['delete_all'])){
+    mysqli_query($conn, "DELETE FROM `cart`");
+    header('location:shoppingcart.php');
+ }
+ 
 }
 
 ?>
@@ -103,16 +109,9 @@ if(isset($_GET['delete_all'])){
   <nav data-dark-mode="both">
     <div class="bumper">
       <h2 id="home-button">HOME</h2>
-      <h2 id="explore-button">EXPLORE</h2>
-      <h2 id="categories-button">CATEGORIES<i class='bx bx-chevron-down'></i></h2>
-      <div class="dropdown hidden" data-dark-mode="both">
-        <ul>
-          <li id="Meat & Seafood">Meat & Seafood</li>
-          <li id="Vegetables">Vegetables</li>
-          <li id="Fruits">Fruits</li>
-          <li id="Dairy">Dairy</li>
-        </ul>
-      </div>
+      <h2 id="explore-button"><a href = "../PHP/productpage.php">EXPLORE</a></h2>
+      
+      
     </div>
   </nav>
 
@@ -177,8 +176,8 @@ if(isset($_GET['delete_all'])){
          <?php
            $total_weight += $sub_weight;
            $grand_total += $sub_total;
-            if($total_weight > 20.00) {
-              $grand_total += 5.00;
+            if($total_weight > 20) {
+              $grand_total += 5;
             }
             };
          };

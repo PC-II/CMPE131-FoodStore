@@ -3,12 +3,13 @@ session_start();
 
 
 @include 'config.php';
-if (!isset($_SESSION["admin"])) {
-   echo "User Not Signed in";
-   echo "<script>window.location.href='/HTML/employee_login.html';</script>";
-   exit();
-}
-else {
+// if (!isset($_SESSION["admin"])) {
+//    echo "Admin Not Signed in";
+//    echo "<script>window.location.href='/HTML/employee_login.html';</script>";
+//    sleep(3);
+//    exit();
+// }
+// else {
 
 
 if(isset($_POST['add_product'])){
@@ -67,7 +68,7 @@ if(isset($_POST['update_product'])){
    }
 
 }
-}
+
 ?>
 
 <!DOCTYPE html>
