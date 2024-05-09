@@ -148,4 +148,5 @@
 
 </body>
 <script src="../JS/index.js" type="module" defer></script>
+<script src="../JS/search.js" type="module" defer></script>
 </html>
