@@ -128,7 +128,7 @@ body
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 550px;
+  width: 250px;
 }
 .top-bar-2 .right .search-suggestions
 {

@@ -31,16 +31,16 @@
       <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
       <section class="right">
   
-      <div class="search-suggestions" data-dark-mode="both">
+      <!-- <div class="search-suggestions" data-dark-mode="both">
           <ul>
-            <!-- suggestions are placed here depending on input field -->
+            
           </ul>
         </div>
 
         <form class="search-bar">
           <input type="text" placeholder="What can we help you find?" maxlength="40">
-          <!-- <i class='bx bx-search-alt' id="search-button"></i> -->
-        </form>
+          
+        </form> -->
   
         <i class='bx bx-cart' id="cart-button" data-dark-mode="text"></i>
         <i class='bx bx-user-circle' id="account-button" data-dark-mode="text" ></i>
@@ -60,7 +60,7 @@
       <?php if (isset($_SESSION["user"])): ?> 
         <h2 id="explore-button"><a href = "../PHP/productpage.php">EXPLORE</a></h2>
         <?php else: ?>
-              <h2><a href = "../HTML/customer_login.html">Login in to see products</a></li>
+              <h2><a href = "../HTML/customer_login.html">Login to see products</a></li>
           <?php endif; ?>
     </div>
   </nav>
