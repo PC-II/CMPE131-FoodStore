@@ -10,7 +10,11 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
         $first_name = $_POST["first_name"];
         $last_name = $_POST["last_name"];
         $phone = $_POST["phone"];
-        $address = $_POST["address"];
+        $street_name = $_POST["street_name"];
+        $apartmment_number = $_POST["apartment_number"];
+        $city = $_POST["city"];
+        $state = $_POST["state"];
+        $zipcode = $_POST["zipcode"];
         
         //create connection
         $conn = mysqli_connect("localhost", "root", "","store_database");
@@ -36,17 +40,23 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
         else 
         {
             // Prepare a statement to insert new user data
-            $register_sql = "INSERT INTO customer_info (email, password, firstName, lastName, phoneNumber, Address) VALUES (?, ?, ?, ?, ?, ?)";
+            $register_sql = "INSERT INTO customer_info (email, password, first_name, last_name, phone, street_name, apartment_number, city, state, zipcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $register_stmt = $conn->prepare($register_sql);
-            $register_stmt->bind_param("ssssss", $email, $password, $first_name, $last_name, $phone, $address);
+            $register_stmt->bind_param("ssssssssss", $email, $password, $first_name, $last_name, $phone, $street_name, $apartmment_number, $city, $state, $zipcode);
             $register_result = $register_stmt->execute();
 
             if($register_result) 
             {
-                echo "You were registered successfully :) ";
-                echo "\nRedirecting to login page...";
+                echo "<script>alert('You were registered successfully. Redirecting to Login Page... ');</script>";
+                sleep(3);
+                
+                $check_stmt->close();
+                $register_stmt->close();
+                mysqli_close($conn); //closes connection
 
-                echo "<script>window.location.href='../HTML/customer_login.html';</script>";
+                
+
+                echo "<script>window.location.href='/HTML/customer_login.html';</script>";
                 exit();
             } 
             else 
@@ -67,6 +77,6 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
 }
 
 if (isset($errorMessage)) {
-    echo "<script>window.location.href='../HTML/customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
+    echo "<script>window.location.href='customer_login.html?error=" . urlencode($errorMessage) . "';</script>";
 }
 ?>

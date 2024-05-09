@@ -62,40 +62,38 @@
 
 <div class="container">
     <div class="login-box">
-        <h2>Contact Us</h2>
+    <?php
+    include 'config.php';
+      if (isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["subject"]) && isset($_POST["message"])){
+        if ($_POST["name"] && $_POST["email"] && $_POST["subject"] && $_POST["message"]){
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $subject = $_POST["subject"];
+        $message = $_POST["message"];
 
-        <hr>
+       
 
-        <div class="link">
-            <p>If you have any questions, concerns, inquiries please reach out to us at: </p>
-            <br>
-            <p> OGS@frankstore.com</p>
-            <p> (123) 456-7890</p>
-        </div>
+        $sql = "INSERT INTO messages (name, email, subject, message) VALUES('$name','$email','$subject','$message')";
 
-        <hr>
+        $results = mysqli_query($conn,$sql);
 
-              <div class="container2">
+        if ($results) {
+          echo "Your message has been submitted. Thank you for contacting us. We will reach out with a reply as soon as possible.";
+        } else{
+          echo mysqli_error($conn);
+        }
 
-          <p> Or send us a message below and we will contact you as soon as possible </p>
+        mysqli_close($conn);
 
-          <form action="../PHP/contact_us_submitted.php" method="post">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name..">
-      <br>
-          <label for="email">Email</label>
-          <input type="text" id="email" name="email" placeholder="Your email..">
-      <br>
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" placeholder="Subject of message..">
-    <br>
-          <label for="message">Message</label> <br>
-          <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
-      <br>
-          <input type="submit" value="Submit">
 
-        </form>
-      </div>
+      }
+      else {
+        echo "One or more of the boxes are empty.";
+      }
+    } else{
+        echo "Form was not submitted.";
+      }
+     ?>
 
 
         <hr>
