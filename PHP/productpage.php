@@ -47,7 +47,7 @@ while ($product = mysqli_fetch_assoc($products)) {
 
 if(isset($message)){
    foreach($message as $message){
-      echo '<div class="message"><span>'.$message.'</span> <i class="fas fa-times" onclick="$(this).parent().hide();"></i> </div>';
+      echo '<div class="message" data-dark-mode ="text"><span>'.$message.'</span> <i class="fas fa-times" onclick="$(this).parent().hide();"></i> </div>';
    };
 };
 
@@ -151,9 +151,9 @@ if(isset($message)){
     <div class="box-container">
       <?php foreach ($products as $product) {
       if ($product['item_quantity'] > 0) {?>
-          <form action="" method="post">
+          <form action="" method="post" >
               <div class="box" >
-                  <img src="../images/<?php echo $product['item_image'];?>" height="100%" width="100%" alt="">
+                  <img src="../IMAGES/<?php echo $product['item_image'];?>" height="100%" width="100%" alt="">
                   <h3><?php echo $product['item_name'];?></h3>
                   <div class="price">Price: $<?php echo $product['item_price'];?></div>
                   <div class="quantity">Quantity: <?php echo $product['item_quantity'];?> items left</div>
@@ -191,9 +191,155 @@ if(isset($message)){
 </body>
 
   <script>
+
 $(document).ready(function(){
+  const searchInput = document.querySelector('.search-bar input');
+  const main = document.querySelector('main');
+  const searchSuggestions = document.querySelector('.search-suggestions');
+  const suggestionDropdown = searchSuggestions.querySelector('ul');
+  searchInput.addEventListener('input', () => {
+    // dim the main section
+    suggestionDropdown.innerHTML = ``;
+    if(searchInput.value.length > 0)
+    {
+      main.style.opacity = '0.3';
+      searchSuggestions.classList.remove('hidden');
+      searchSuggestions.style.maxHeight = `none`;
+      const results = queryDb(searchInput.value);
+      if(results.length == 0)
+      {
+        suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li style="color: gray;">Could not find result for "${searchInput.value}"</li>`)
+      }
+      else
+      {
+        results.forEach((result, i) => {
+          if(i > 9) return;
+          suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li>${result}</li>`)
+        });
+
+        const suggestions = $('.search-suggestions li');
+          suggestions.each(function() {
+            $(this).on('click', function() {
+              alert($(this).text());
+              const productsContainer = $('.box-container');
+              productsContainer.html('');
+              if (product.item_quantity > 0) {
+                var productHTML = `
+                  <form action="" method="post">
+                    <div class="box" data-dark-mode="text">
+                        <img src="../images/${product.item_image}" height="100%" width="100%" alt="">
+                        <h3 data-dark-mode="text">${product.item_name}</h3>
+                        <div class="price">Price: $${product.item_price}</div>
+                        <div class="quantity">Quantity: ${product.item_quantity} items left</div>
+                        <input type="hidden" name="product_name" value="${product.item_name}">
+                        <input type="hidden" name="product_price" value="${product.item_price}">
+                        <input type="hidden" name="product_weight" value="${product.item_weight}">
+                        <input type="hidden" name="product_image" value="${product.item_image}">
+                        <input type="submit" class="btn" value="add to cart" name="add_to_cart">
+                    </div>
+                  </form>
+                `;
+              } else {
+                var productHTML = `
+                  <div class="box">
+                      <h3>${product.item_name}</h3>
+                      <div class="quantity">Out of Stock</div>
+                  </div>
+                `;
+              }
+              productsContainer.append(productHTML);
+            });
+          });
+      }
+    }
+    else
+    {
+      main.style.opacity = ``;
+      searchSuggestions.classList.add('hidden');
+    }
+  });
+
+
+  const queryDb = (q) => {
+    let list = [];
+    q = q.toLowerCase();
+    const qList = q.split(' ');
+    qList.forEach(qItem => {
+      if(qItem == '') return;
+      testDb.forEach(entry => {
+        const words = entry.toLowerCase().split(' ');
+        words.forEach(word => {
+          if(list.includes(entry)) return;
+          if(word.startsWith(qItem))
+            list.push(entry);
+        });
+      });
+    });
+
+    const releventItems = list.filter(item => item.toLowerCase().startsWith(q)).sort();
+    const nonReleventItems = list.filter(item => !item.toLowerCase().startsWith(q)).sort();
+    list = [...releventItems, ...nonReleventItems];
+
+    return list;
+  }
+
+
+  let testDb = [
+  'Banana',
+  'Lemon',
+  'Lime',
+  'Orange',
+  'Strawberries',
+  'Blueberries',
+  'Raspberries',
+  'Blackberries',
+  'Mango',
+  'Pineapples',
+  'Pink Lady Apples',
+  'Cucumber',
+  'Red Bell Peppers',
+  'Yellow Onion',
+  'Red Onion',
+  'Broccoli',
+  'Garlic',
+  'Roma Tomato',
+  'Ginger Root',
+  'Carrot',
+  'Cauliflower',
+  'Gold potato',
+  'Cabbage',
+  'Chicken Breast',
+  'Chicken Thighs Boneless',
+  'Ground Beef',
+  'Bacon',
+  'Salmon Fillet Portion',
+  'Ribeye Steak',
+  'Frozen Shrimp',
+  'Cage free Large Grade A Eggs 12',
+  'Pasture-Raised Eggs 18',
+  'Tofu',
+  'Oat Milk', 
+  'Butter',
+  'Whole Milk gallon',
+  'Cream Cheese',
+  'Greek Yogurt Cup',
+  'Cottage Cheese',
+  ]
+
+  // Make an AJAX request to the PHP script
+  fetch('get_products.php')
+    .then(response => response.json())
+    .then(productNames => {
+          // Update the testDb array
+          testDb = productNames;
+          console.log('Updated testDb:', testDb);
+      })
+    .catch(error => console.error('Error:', error));
+    
 
   
+  
+
   $('.dropdown li').click(function(){
     var category = $(this).text();
     var productsContainer = $('.box-container');
@@ -201,7 +347,6 @@ $(document).ready(function(){
 
     var productsByCategory = <?php echo json_encode($products_by_category);?>;
     var products = productsByCategory[category];
-    alert(category);
     $("#category-heading").text('');
     $("#category-heading").text(category);
     products.forEach(function(product){
@@ -230,16 +375,17 @@ $(document).ready(function(){
         `;
       }
       productsContainer.append(productHTML);
-});  });
-  
+});  
 });
-</script>
-<script src = "../JS/index.js"></script>
-<script src = "../JS/search.js"></script>
-
-<script>
+});
+  
 
 </script>
+
+
+
+
+
 
 </body>
 

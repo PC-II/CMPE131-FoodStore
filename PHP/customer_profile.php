@@ -10,7 +10,7 @@ else {
 include 'config.php';
 
 $customer_id = $_SESSION["user"];
-$order_sql = "SELECT order_id, name, number, email, street_name, apartment_number, city, state, zipcode, total_product, total_price FROM orders_history WHERE customer_id = ?";
+$order_sql = "SELECT order_id, name, number, email, street_name, apartment_number, city, state, zipcode, total_product, total_price, total_weight FROM orders_history WHERE customer_id = ?";
 $order_stmt = $conn->prepare($order_sql);
 $order_stmt->bind_param("s", $customer_id);
 $order_stmt->execute();

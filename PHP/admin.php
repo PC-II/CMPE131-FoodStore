@@ -1,6 +1,15 @@
 <?php
+session_start();
+
 
 @include 'config.php';
+if (!isset($_SESSION["admin"])) {
+   echo "User Not Signed in";
+   echo "<script>window.location.href='/HTML/employee_login.html';</script>";
+   exit();
+}
+else {
+
 
 if(isset($_POST['add_product'])){
    $p_name = $_POST['p_name'];
@@ -58,7 +67,7 @@ if(isset($_POST['update_product'])){
    }
 
 }
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +93,8 @@ if(isset($message)){
 };
 
 ?>
-<a href="../PHP/index.php" class="btn">Back to Home</a>
+<a href="../PHP/index.php" id="admin-back" class="btn">Back to Home</a>
+<a href="../PHP/display_messages.php" class="btn">To Contact Messages</a>
 <div class="container">
 
 <section>
@@ -207,6 +217,11 @@ if(isset($message)){
 
       testDB.push(name);
 
+      $("#admin-back").onclick(function() {
+         <?php
+            unset($_SESSION["admin"]);
+         ?>
+      });
    });
 
 </script>

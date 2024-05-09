@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +65,7 @@
 <body>
 
 <div class="container">
-    <div class="login-box">
+    <div class="login-box" >
     <?php
     include 'config.php';
       if (isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["subject"]) && isset($_POST["message"])){
@@ -72,7 +76,7 @@
         $message = $_POST["message"];
 
        
-
+          
         $sql = "INSERT INTO messages (name, email, subject, message) VALUES('$name','$email','$subject','$message')";
 
         $results = mysqli_query($conn,$sql);
@@ -106,4 +110,6 @@
 </div>
 
 </body>
+
+<script src = "../SRC/index.js"></script>
 </html>
