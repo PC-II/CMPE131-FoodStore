@@ -651,11 +651,6 @@ footer ul li:hover
   cursor: pointer;
 }
 
-[data-dark-mode], .dark-body
-{
-  transition: 250ms ease-in-out;
-}
-
 .dark-body {
   background: rgb(31 41 55) !important;
 }
@@ -666,4 +661,20 @@ footer ul li:hover
 .dark-text
 {
   color: white !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.products .box-container .box h3{
+  margin:1rem 0;
+  font-size: 2.5rem;
+  /* color:var(--black); */
+}
+
+.products .box-container .box .price{
+  font-size: 2.5rem;
+  /* color:var(--black); */
 }

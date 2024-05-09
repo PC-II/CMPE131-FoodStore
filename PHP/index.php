@@ -1,5 +1,6 @@
 <?php
   session_start();
+
   ?>
   
 <!DOCTYPE html>
@@ -8,6 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="../CSS/index.css"></link>
   <title>Food Store</title>
 </head>
@@ -28,8 +30,8 @@
     <div class="bumper">
       <img src="../IMAGES/OGS_logo.png" alt="OGS logo" id="logo-button">
       <section class="right">
-
-        <div class="search-suggestions" data-dark-mode="both">
+  
+      <div class="search-suggestions" data-dark-mode="both">
           <ul>
             <!-- suggestions are placed here depending on input field -->
           </ul>
@@ -55,16 +57,11 @@
   <nav data-dark-mode="both">
     <div class="bumper">
       <h2 id="home-button">HOME</h2>
-      <h2 id="explore-button">EXPLORE</h2>
-      <h2 id="categories-button">CATEGORIES<i class='bx bx-chevron-down'></i></h2>
-      <div class="dropdown hidden" data-dark-mode="both">
-        <ul>
-          <li>Meat & Seafood</li>
-          <li>Vegetables</li>
-          <li>Fruits</li>
-          <li>Dairy</li>
-        </ul>
-      </div>
+      <?php if (isset($_SESSION["user"])): ?> 
+        <h2 id="explore-button"><a href = "../PHP/productpage.php">EXPLORE</a></h2>
+        <?php else: ?>
+              <h2><a href = "../HTML/customer_login.html">Login in to see products</a></li>
+          <?php endif; ?>
     </div>
   </nav>
 
@@ -156,7 +153,24 @@
     </div>
   </footer>
 
+
 </body>
 <script src="../JS/index.js" type="module" defer></script>
 <script src="../JS/search.js" type="module" defer></script>
+
+<script>
+  $(document).ready(function() {
+    let suggestions = [];
+    $('.search-suggestions li').each(function() {
+      suggestions.push($(this).text());
+
+      
+    });
+
+
+    
+    
+  });
+
+</script>
 </html>

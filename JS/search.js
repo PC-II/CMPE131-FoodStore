@@ -1,3 +1,6 @@
+
+
+
 const searchInput = document.querySelector('.search-bar input');
 const main = document.querySelector('main');
 const searchSuggestions = document.querySelector('.search-suggestions');
@@ -15,10 +18,20 @@ searchInput.addEventListener('input', () => {
     {
       suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li style="color: gray;">Could not find result for "${searchInput.value}"</li>`)
     }
-    results.forEach((result, i) => {
-      if(i > 9) return;
-      suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li>${result}</li>`)
-    });
+    else
+    {
+      results.forEach((result, i) => {
+        if(i > 9) return;
+        suggestionDropdown.insertAdjacentHTML(`beforeend`, `<li>${result}</li>`)
+      });
+
+      const suggestions = searchSuggestions.querySelectorAll('li');
+      suggestions.forEach(suggestion => {
+        suggestion.addEventListener('click', () => {
+          alert(suggestion.textContent);
+        })
+      })
+    }
   }
   else
   {
@@ -51,57 +64,55 @@ const queryDb = (q) => {
   return list;
 }
 
-const testDb = [
-  'Cilantro',
-  'Strawberries',
-  'Celery',
-  'Raspberries',
-  'Broccoli',
-  'Blackberries',
-  'Carrot',
-  'Kale',
-  'Cucumber',
-  'Red Bell Pepper',
-  'Romaine Lettuce', 
-  'Baby Spinach',
-  'Italian Parsley',
-  'Boneless Skinless Chicken Breast',
-  'Radish',
-  'Italian Squash',
-  'Cauliflower',
-  'Canned Black Beans',
-  'Honeycrisp Apple',
-  'Bundle of Asparagus',
-  'Chicken Boneless Thighs',
-  'Sea Salt Blue Corn Tortilla Chips',
-  'Gala Apple',
-  'Green Cabbage',
-  'Yellow Onion',
-  'Low Sodium Garbanzo Beans',
-  'Sweet Tomatoes',
-  'Green Leaf Lettuce',
-  'Lacinato Kale',
-  'Garlic Bag',
-  'Extra Firm Tofu',
-  'Red Cabbage',
-  'Brussel Sprouts',
-  'Rainbow Carrots',
-  'Red Beet',
-  'Red Mango',
-  'Cage Free Dozen Brown Eggs',
-  'Green Peas',
-  'Green Bell Peppers',
-  'Beefsteak Tomato',
-  'Fuji Apple',
-  'Spaghetti Squash',
-  'Baby Bella Mushrooms',
-  'Russel Potato',
-  'Baby Bok Choy',
-  'Whole Grain Thin Sliced Bread',
-  'Lemon',
-  'Large Avocado',
-  'Ground Turkey',
-  'Grass-Fed 85% Lean Ground Beef',
-  'Organic Original Almond Milk',
-  'Organic Heavy Whipping Cream'
+
+let testDb = [
+'Banana',
+'Lemon',
+'Lime',
+'Orange',
+'Strawberries',
+'Blueberries',
+'Raspberries',
+'Blackberries',
+'Mango',
+'Pineapples',
+'Pink Lady Apples',
+'Cucumber',
+'Red Bell Peppers',
+'Yellow Onion',
+'Red Onion',
+'Broccoli',
+'Garlic',
+'Roma Tomato',
+'Ginger Root',
+'Carrot',
+'Cauliflower',
+'Gold potato',
+'Cabbage',
+'Chicken Breast',
+'Chicken Thighs Boneless',
+'Ground Beef',
+'Bacon',
+'Salmon Fillet Portion',
+'Ribeye Steak',
+'Frozen Shrimp',
+'Cage free Large Grade A Eggs 12',
+'Pasture-Raised Eggs 18',
+'Tofu',
+'Oat Milk', 
+'Butter',
+'Whole Milk gallon',
+'Cream Cheese',
+'Greek Yogurt Cup',
+'Cottage Cheese',
 ]
+
+// Make an AJAX request to the PHP script
+fetch('get_products.php')
+   .then(response => response.json())
+   .then(productNames => {
+        // Update the testDb array
+        testDb = productNames;
+        console.log('Updated testDb:', testDb);
+    })
+   .catch(error => console.error('Error:', error));

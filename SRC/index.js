@@ -30,11 +30,14 @@ accountBtn.addEventListener("click", () => {
 const categoriesBtn = document.querySelector('#categories-button');
 const dropdownMenu = document.querySelector('.dropdown');
 const main = document.querySelector('main');
-categoriesBtn.addEventListener('click', () => {
-  // open the dropdown menu for the categories
-  dropdownMenu.classList.toggle('hidden');
-  main.classList.toggle('dim');
-});
+if(categoriesBtn) {
+  categoriesBtn.addEventListener('click', () => {
+    // open the dropdown menu for the categories
+    dropdownMenu.classList.toggle('hidden');
+    main.classList.toggle('dim');
+  });
+}
+
 
 document.addEventListener('click', (e) => {
   if(!dropdownMenu.contains(e.target) && !categoriesBtn.contains(e.target))
@@ -336,6 +339,7 @@ botSubmitBtn.addEventListener('click', async () => {
 
   const response = await generateResponse(userInput.value);
   console.log(response);
+  showResponse(response);
 });
 
 const waitingBalls = document.querySelector('.chat-bot .bot-field .waiting-balls')

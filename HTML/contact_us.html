@@ -1,9 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>About Us</title>
-   <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login Page</title>
+    <style>
+        hr {
+          display: block;
+          margin-top: 0.5em;
+          margin-bottom: 0.5em;
+          margin-left: auto;
+          margin-right: auto;
+          border-style: inset;
+          border-width: 1px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d8f0d1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background-color: #edebeb;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box h2 {
+        text-align: center;
+    }
+
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .container2 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link a {
+            color: #388022;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
+    <div class="login-box">
+        <h2>Contact Us</h2>
+
+        <hr>
+
+        <div class="link">
+            <p>If you have any questions, concerns, inquiries please reach out to us at: </p>
+            <br>
+            <p> OGS@frankstore.com</p>
+            <p> (123) 456-7890</p>
+        </div>
+
+        <hr>
+
+              <div class="container2">
+
+          <p> Or send us a message below and we will contact you as soon as possible </p>
+
+          <form action="../PHP/contact_us_submitted.php" method="post">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name..">
+      <br>
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" placeholder="Your email..">
+      <br>
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject of message..">
+    <br>
+          <label for="message">Message</label> <br>
+          <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
+      <br>
+          <input type="submit" value="Submit">
+
+        </form>
+      </div>
+
+
+        <hr>
+
+        <div class="link">
+            <p><a href="../PHP/index.php">Home Page</a></p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
