@@ -16,7 +16,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
         }
 
         // Prepare and bind to protect against SQL injection
-        $stmt = $conn->prepare("SELECT customer_id, password FROM customer_info WHERE email = ?");
+        $stmt = $conn->prepare("SELECT password FROM customer_info WHERE email = ?");
         $stmt->bind_param("s", $email);
 
         // Execute query
@@ -29,10 +29,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
             $row = $result->fetch_assoc();
             // Check if password is correct
             if ($row["password"] === $password) { 
-                $_SESSION["user"] = $row['customer_id'];
-
-                $stmt->close();
-                mysqli_close($conn); 
+                $_SESSION["user"] = $email;
 
                 echo "<script>window.location.href='../PHP/index.php';</script>";
                 exit();

@@ -1,11 +1,10 @@
 <?php
 //check if employee ename and password are provided
-if(isset($_POST["first_name"]) && isset($_POST["last_name"])  && isset($_POST["password"]))
+if(isset($_POST["eName"]) && isset($_POST["password"]))
 {
-    if($_POST["first_name"] && $_POST["first_name"] && $_POST["password"])
+    if($_POST["eName"] && $_POST["password"])
     {
-        $first_name = $_POST["first_name"];
-        $last_name = $_POST["last_name"];
+        $eName = $_POST["eName"];
         $password = $_POST["password"];
         
         //create connection
@@ -18,8 +17,9 @@ if(isset($_POST["first_name"]) && isset($_POST["last_name"])  && isset($_POST["p
         }
 
         //prepare and bind to protect against sql injection
-        $stmt = $conn->prepare("SELECT password FROM employee_info WHERE first_name = ? AND last_name = ?");
-        $stmt->bind_param("ss", $first_name, $last_name);
+        $stmt = $conn->prepare("SELECT password FROM employee_info WHERE eName = ?");
+        $stmt->bind_param("s", $eName);
+
         //execute query
         $stmt->execute();
 
@@ -33,14 +33,8 @@ if(isset($_POST["first_name"]) && isset($_POST["last_name"])  && isset($_POST["p
             if ($row["password"] === $password)
             { 
                 
-                $stmt->close();
-                mysqli_close($conn); 
-
                 echo "Logged in Successfully.";
                 echo "\r\n". "Redirecting to employee page...";
-
-                echo "<script>window.location.href='../PHP/admin.php';</script>";
-                exit();
             }
             else
             {
@@ -58,7 +52,7 @@ if(isset($_POST["first_name"]) && isset($_POST["last_name"])  && isset($_POST["p
     } 
     else 
     {
-        echo "Name or password is empty.";
+        echo "Email or password is empty.";
     }
 }
 ?>
