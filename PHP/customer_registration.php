@@ -56,7 +56,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
 
                 
 
-                echo "<script>window.location.href='/HTML/customer_login.html';</script>";
+                echo "<script>window.location.href='../HTML/customer_login.html';</script>";
                 exit();
             } 
             else 

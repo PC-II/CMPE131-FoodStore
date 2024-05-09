@@ -9,6 +9,7 @@ $customer_id = $_SESSION["user"];
 
 
 
+
 $name = $data['first_name'].' '.$data['last_name'];
 $number = $data['phone'];
 $email = $data['email'];
@@ -27,13 +28,18 @@ if(isset($_POST['order_btn'])){
       while($product_item = mysqli_fetch_assoc($cart_query)){
          $product_name[] = $product_item['name'] .' ('. $product_item['quantity'] .') ';
          $product_query = mysqli_query($conn, "UPDATE store_inventory SET item_quantity = item_quantity - ". $product_item['quantity']. " WHERE item_name = '". $product_item['name']. "'") or die('query failed');
-         $product_price = number_format($product_item['price'] * $product_item['quantity']);
+         $product_price = number_format($product_item['price'] * $product_item['quantity'], 2);
+         $product_weight = number_format($product_item['weight'] * $product_item['quantity'], 2);
          $price_total += $product_price;
+         $weight_total += $product_weight;
+         if($weight_total > 20.00) {
+            $price_total += 5.00;
+          }
       };
    };
 
    $total_product = implode(', ',$product_name);
-   $detail_query = mysqli_query($conn, "INSERT INTO `orders_history`(customer_id, name, number, email, street_name, apartment_number, city, state, zipcode, total_product, total_price) VALUES('$customer_id','$name', '$number', '$email', '$street_name', '$apartment_number', '$city', '$state', '$zipcode', '$total_product', '$price_total')") or die('query failed');
+   $detail_query = mysqli_query($conn, "INSERT INTO `orders_history`(customer_id, name, number, email, street_name, apartment_number, city, state, zipcode, total_product, total_price, total_weight) VALUES('$customer_id','$name', '$number', '$email', '$street_name', '$apartment_number', '$city', '$state', '$zipcode', '$total_product', '$price_total', '$weight_total')") or die('query failed');
 
    if($cart_query && $detail_query){
       mysqli_query($conn, "DELETE FROM `cart`");
@@ -43,7 +49,8 @@ if(isset($_POST['order_btn'])){
          <h3>thank you for shopping!</h3>
          <div class='order-detail'>
             <span>".$total_product."</span>
-            <span class='total'> total : $".$price_total."/-  </span>
+            <span class='total'> Total : $".$price_total."</span>
+            <span class='total'> Weight : $".$weight_total."</span>
          </div>
          <div class='customer-details'>
             <p> your name : <span>".$name."</span> </p>
@@ -154,10 +161,18 @@ if(isset($_POST['order_btn'])){
          $select_cart = mysqli_query($conn, "SELECT * FROM `cart`");
          $total = 0;
          $grand_total = 0;
+         $weight = 0;
+         $grand_weight = 0;
          if(mysqli_num_rows($select_cart) > 0){
             while($fetch_cart = mysqli_fetch_assoc($select_cart)){
-            $total_price = number_format($fetch_cart['price'] * $fetch_cart['quantity']);
+            $total_price = number_format($fetch_cart['price'] * $fetch_cart['quantity'], 2);
+            $total_weight = number_format($fetch_cart['weight'] * $fetch_cart['quantity'], 2);
             $grand_total = $total += $total_price;
+            $grand_weight = $weight += $total_weight;
+            if($grand_weight > 20.00) {
+               $grand_total += 5.00;
+             }
+
       ?>
       <span><?= $fetch_cart['name']; ?>(<?= $fetch_cart['quantity']; ?>)</span>
       <?php
@@ -166,7 +181,8 @@ if(isset($_POST['order_btn'])){
          echo "<div class='display-order'><span>your cart is empty!</span></div>";
       }
       ?>
-      <span class="grand-total"> grand total : $<?= $grand_total; ?></span>
+      <span class="grand-total"> Grand total : $<?= $grand_total; ?></span>
+      <span class="grand-total"> Total weight : <?= $grand_weight; ?> Lbs</span>
    </div>
 
       <div class="flex">
@@ -192,7 +208,7 @@ if(isset($_POST['order_btn'])){
 </div>
 
 <!-- custom js file link  -->
-<script src="../js/script.js"></script>
+
    
 </body>
 </html>

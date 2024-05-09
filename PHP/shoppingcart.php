@@ -143,9 +143,15 @@ if(isset($_GET['delete_all'])){
 
          <?php 
 
+
+         $query_result = mysqli_query($conn, "SELECT MAX(item_quantity) AS item_quantity FROM store_inventory");
+
+         while($row = mysqli_fetch_assoc($query_result)) {
+            $output = $row['item_quantity'];
+         }
+
+         $fetch_products = mysqli_query($conn, "SELECT * FROM store_inventory");
          $select_cart = mysqli_query($conn, "SELECT * FROM cart");
-         $store_inventory = mysqli_query($conn, "SELECT * FROM store_inventory");
-         $fetch_products = mysqli_fetch_assoc($store_inventory);
          $grand_total = 0;
          $total_weight = 0;
          if(mysqli_num_rows($select_cart) > 0){
@@ -153,14 +159,14 @@ if(isset($_GET['delete_all'])){
          ?>
 
          <tr>
-            <td><img src="../IMAGES/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
+            <td><img src="../images/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
             <td><?php echo $fetch_cart['name']; ?></td>
             <td><?php echo number_format($fetch_cart['weight'], 2); ?></td>
-            <td>$<?php echo number_format($fetch_cart['price'], ); ?></td>
+            <td>$<?php echo number_format($fetch_cart['price'], 2); ?></td>
             <td>
                <form action="" method="post">
                   <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['id']; ?>" >
-                  <input type="number" name="update_quantity" min="1" max="<?php echo ($fetch_cart['name'] && $fetch_products['item_quantity']); ?>"  value="<?php echo $fetch_cart['quantity']; ?>" >
+                  <input type="number" name="update_quantity" min="1" max="<?php echo $output ?>" value="<?php echo $fetch_cart['quantity']; ?>" >
                   <input type="submit" value="update" name="update_update_btn">
                </form>
             </td>
@@ -171,8 +177,8 @@ if(isset($_GET['delete_all'])){
          <?php
            $total_weight += $sub_weight;
            $grand_total += $sub_total;
-            if($total_weight > 20) {
-              $grand_total += 5;
+            if($total_weight > 20.00) {
+              $grand_total += 5.00;
             }
             };
          };

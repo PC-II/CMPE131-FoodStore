@@ -52,6 +52,36 @@ if ($result->num_rows > 0) {
     
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> </link>
 </head>
+<style>
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+
+    }
+
+    .past-order-table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+
+    .past-order-table th,
+    .past-order-table td {
+    padding: 10px;
+    border: 1px solid #e9ecef;
+    }
+
+    .past-order-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    }
+
+    .past-order-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+    }
+</style>
 
 <body>
     <div class="top-bar-1" data-dark-mode="background">
@@ -257,7 +287,7 @@ if ($result->num_rows > 0) {
                     
                     <div class = "past-orders" id="past-order-info" data-dark-mode="both" style="display: none;">
                         <h1 id="table-header">Order History</h1>
-                        <table id="order-history-table">
+                        <table id="order-history-table" class="past-order-table">
                             <thead>
                                 <tr>
                                     <th>Order ID</th>
@@ -287,8 +317,8 @@ if ($result->num_rows > 0) {
                                         <td><?= $order['state'];?></td>
                                         <td><?= $order['zipcode'];?></td>
                                         <td><?= $order['total_product'];?></td>
-                                        <td><?= $order['total_price'];?></td>
-                                        <td><?= $order['total_weight'];?></td>
+                                        <td>$<?= $order['total_price'];?></td>
+                                        <td><?= $order['total_weight'];?> Lbs</td>
                                     </tr>
                                 <?php endwhile;?>
                             </tbody>
